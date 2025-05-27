@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>백엔드/시스템 엔지니어 포트폴리오 - 김성태</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #0d1117;
+            color: #e6edf3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+        }
+        .accent-color {
+            color: #58a6ff;
+        }
+        .code-block {
+            background-color: #161b22;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid #58a6ff;
+            font-family: 'Courier New', monospace;
+            position: absolute;
+            right: -60px;
+            top: 50%;
+            transform: translateY(-50%) translateX(120%);
+            width: 45%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0.9;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            transition: transform 0.5s ease-in-out;
+            z-index: 10;
+        }
+        .code-block.show {
+            transform: translateY(-50%) translateX(0);
+            right: 40px;
+        }
+        .slide-button {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #58a6ff, #4a9eff);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 120px;
+            cursor: pointer;
+            border-radius: 8px 0 0 8px;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .slide-button:hover {
+            background: linear-gradient(135deg, #4a9eff, #3d8bff);
+            width: 45px;
+            box-shadow: -4px 0 15px rgba(0, 0, 0, 0.4);
+        }
+        .slide-button.active {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+        }
+        .contact-item {
+            transition: all 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+        .contact-item:hover {
+            color: #58a6ff;
+            transform: translateX(5px);
+            background: rgba(88, 166, 255, 0.1);
+        }
+        .animated-border {
+            position: relative;
+            overflow: hidden;
+        }
+        .animated-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #58a6ff;
+            animation: borderAnimation 3s ease infinite;
+        }
+        @keyframes borderAnimation {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 0; }
+        }
+        .profile-container {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 4px solid #58a6ff;
+            box-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+            background: linear-gradient(135deg, #30363d, #21262d);
+            animation: profilePulse 3s ease-in-out infinite;
+        }
+        @keyframes profilePulse {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(88, 166, 255, 0.8);
+                transform: scale(1.05);
+            }
+        }
+        #headerSection {
+            transition: opacity 0.5s ease-in-out;
+        }
+        #headerSection.dimmed {
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex flex-col justify-between p-16">
+        <!-- Header section with name and title -->
+        <div class="text-center mb-10" id="headerSection">
+            <div class="flex justify-center items-center">
+                <div class="profile-container flex justify-center items-center">
+                    <div class="text-center">
+                        <i class="fas fa-code text-4xl text-gray-300 mb-2"></i>
+                        <div class="text-xs font-bold text-gray-400">KST</div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="text-5xl font-bold mt-6 mb-2 text-white">김성태</h1>
+            <div class="flex justify-center items-center">
+                <div class="px-4 py-2 bg-gray-800 rounded-full inline-block animated-border">
+                    <h2 class="text-2xl font-medium accent-color tracking-wider">Backend / System Engineer</h2>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main content section -->
+        <div class="flex justify-between items-center">
+            <!-- Left side with introduction -->
+            <div class="w-1/2 pr-8">
+                <p class="text-2xl mb-8 leading-relaxed italic">"안녕하세요! <br><span class="accent-color font-semibold">하루에 1%씩 꾸준히 발전중인</span><br> 개발자 김성태입니다."</p>
+                
+                <!-- Contact information with icons -->
+                <div class="mt-12">
+                    <div class="flex items-center mb-4 contact-item">
+                        <i class="fas fa-phone accent-color mr-4 text-xl"></i>
+                        <p class="text-lg">010-3115-1042</p>
+                    </div>
+                    <div class="flex items-center mb-4 contact-item">
+                        <i class="fas fa-envelope accent-color mr-4 text-xl"></i>
+                        <p class="text-lg">kst1040@gmail.com</p>
+                    </div>
+                    <div class="flex items-center contact-item">
+                        <i class="fab fa-github accent-color mr-4 text-xl"></i>
+                        <p class="text-lg">github.com/kro46</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right side with code block visual -->
+            <div class="code-block" id="codeBlock">
+                <span class="text-green-400">// 개발 철학</span>
+                <br>
+                <span class="text-blue-400">function</span> <span class="text-yellow-300">developmentPhilosophy</span>() {
+                <br>&nbsp;&nbsp;<span class="text-blue-400">const</span> goals = [
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-orange-300">'지속적인 학습'</span>,
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-orange-300">'문제 해결 능력'</span>,
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-orange-300">'안정적인 시스템 설계'</span>
+                <br>&nbsp;&nbsp;];
+                <br>&nbsp;&nbsp;<span class="text-blue-400">return</span> {
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;passion: <span class="text-orange-300">'하루 1% 성장'</span>,
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;skills: <span class="text-orange-300">'Backend & System'</span>,
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;goals
+                <br>&nbsp;&nbsp;};
+                <br>}
+            </div>
+        </div>
+        
+        <!-- Slide button -->
+        <button class="slide-button" id="slideButton" onclick="toggleCodeBlock()">
+            <span>개발철학</span>
+        </button>
+        
+        <!-- Footer with page indicator -->
+        <div class="mt-8 text-right pr-4">
+            <p class="text-gray-400 text-sm">1 / 8</p>
+        </div>
+    </div>
+
+    <script>
+        let isCodeBlockVisible = false;
+
+        function toggleCodeBlock() {
+            const codeBlock = document.getElementById('codeBlock');
+            const button = document.getElementById('slideButton');
+            const headerSection = document.getElementById('headerSection');
+            
+            if (!isCodeBlockVisible) {
+                // 코드 블록 보이기 & 헤더 희미하게
+                codeBlock.classList.add('show');
+                button.classList.add('active');
+                button.innerHTML = '<span>닫기</span>';
+                headerSection.classList.add('dimmed');
+                isCodeBlockVisible = true;
+            } else {
+                // 코드 블록 숨기기 & 헤더 원래대로
+                codeBlock.classList.remove('show');
+                button.classList.remove('active');
+                button.innerHTML = '<span>개발철학</span>';
+                headerSection.classList.remove('dimmed');
+                isCodeBlockVisible = false;
+            }
+        }
+
+        // 페이지 로드 시 애니메이션 효과
+        document.addEventListener('DOMContentLoaded', function() {
+            // 버튼에 살짝 흔들리는 애니메이션 추가
+            const button = document.getElementById('slideButton');
+            setTimeout(() => {
+                button.style.animation = 'pulse 2s ease-in-out infinite';
+            }, 2000);
+        });
+
+        // CSS에 pulse 애니메이션 추가
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: translateY(-50%) scale(1); }
+                50% { transform: translateY(-50%) scale(1.1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

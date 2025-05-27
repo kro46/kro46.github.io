@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>백엔드 기술 스택</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #0d1117;
+            color: #e6edf3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+        }
+        .accent-color {
+            color: #58a6ff;
+        }
+        .skill-block {
+            width: 50px;
+            height: 24px;
+            margin-right: 4px;
+            border-radius: 4px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .skill-filled {
+            background-color: #2ea44f;
+            box-shadow: 0 0 8px rgba(46, 164, 79, 0.5);
+        }
+        .skill-empty {
+            background-color: #2D3748;
+            opacity: 0.5;
+        }
+        .skill-card {
+            background-color: rgba(30, 41, 59, 0.7);
+            border-left: 4px solid #2ea44f;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(30, 41, 59, 0.9);
+            border-radius: 12px;
+            color: #2ea44f;
+            text-align: center;
+        }
+        .tech-icon.fastapi {
+            color: #009688;
+        }
+        .tech-icon.spring {
+            color: #6db33f;
+        }
+        .animated-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .animated-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #2ea44f;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.5s ease;
+        }
+        .animated-underline:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .api-pulse {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: rgba(46, 164, 79, 0.05);
+            opacity: 0;
+            transform: scale(0);
+            animation: pulse 4s infinite;
+            right: 80px;
+            bottom: 100px;
+            z-index: 0;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0); opacity: 0.5; }
+            50% { transform: scale(1); opacity: 0; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex flex-col p-16">
+        <!-- Header with title -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold mb-2">⚙️ <span class="animated-underline accent-color" style="color: #2ea44f;">Backend 기술 스택</span></h1>
+            <div class="w-32 h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
+        </div>
+        
+        <!-- Main content section with skills -->
+        <div class="flex-grow">
+            <!-- FastAPI Skill -->
+            <div class="skill-card p-6 mb-8">
+                <div class="flex items-center mb-4">
+                    <div class="tech-icon fastapi">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-2xl font-semibold">FastAPI</h2>
+                            <div class="flex">
+                                <div class="skill-block skill-filled"></div>
+                                <div class="skill-block skill-filled"></div>
+                                <div class="skill-block skill-empty"></div>
+                                <div class="skill-block skill-empty"></div>
+                                <div class="skill-block skill-empty"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="ml-4 list-disc text-gray-300 pl-6">
+                    <li class="mb-1">FastAPI를 활용하여 기본적인 REST API 엔드포인트 개발 및 경로 작업(라우팅) 가능</li>
+                    <li>Pydantic을 이용한 데이터 유효성 검사 및 기본적인 비동기 처리 로직 구현 가능</li>
+                </ul>
+            </div>
+
+            <!-- Spring Boot Skill -->
+            <div class="skill-card p-6 mb-8">
+                <div class="flex items-center mb-4">
+                    <div class="tech-icon spring">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-2xl font-semibold">SpringBoot</h2>
+                            <div class="flex">
+                                <div class="skill-block skill-filled"></div>
+                                <div class="skill-block skill-filled"></div>
+                                <div class="skill-block skill-filled"></div>
+                                <div class="skill-block skill-filled"></div>
+                                <div class="skill-block skill-empty"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="ml-4 list-disc text-gray-300 pl-6">
+                    <li class="mb-1">SpringBoot 기반의 웹 애플리케이션 개발 및 RESTful API 설계/구축 경험 보유</li>
+                    <li>JPA/Hibernate를 이용한 데이터베이스 연동 및 기본적인 의존성 주입(DI), 보안 설정 적용 가능</li>
+                </ul>
+            </div>
+
+            <!-- Backend strengths section -->
+            <div class="bg-opacity-40 bg-gray-800 rounded-lg p-6 border-l-4 border-green-400">
+                <h3 class="text-xl font-medium mb-3 text-green-300">백엔드 중점 역량</h3>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-server mr-2 text-green-300"></i>
+                        <span>API 설계 및 개발</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-database mr-2 text-green-300"></i>
+                        <span>데이터베이스 연동</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-shield-alt mr-2 text-green-300"></i>
+                        <span>보안 설정 구축</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Background elements -->
+        <div class="api-pulse"></div>
+        <div class="api-pulse" style="animation-delay: 2s; right: 200px; top: 150px;"></div>
+        
+        <!-- Footer with page indicator -->
+        <div class="mt-4 text-right">
+            <p class="text-gray-400 text-sm">3 / 8</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모바일 개발 기술 스택</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #0d1117;
+            color: #e6edf3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+        .accent-color {
+            color: #9c5cff;
+        }
+        .skill-block {
+            width: 32px;
+            height: 18px;
+            margin-right: 2px;
+            border-radius: 4px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .skill-filled {
+            background-color: #9c5cff;
+            box-shadow: 0 0 8px rgba(156, 92, 255, 0.5);
+        }
+        .skill-empty {
+            background-color: #2D3748;
+            opacity: 0.5;
+        }
+        .skill-card {
+            background-color: rgba(30, 41, 59, 0.7);
+            border-left: 4px solid #9c5cff;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(30, 41, 59, 0.9);
+            border-radius: 12px;
+            color: #9c5cff;
+            text-align: center;
+        }
+        .animated-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .animated-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #9c5cff;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.5s ease;
+        }
+        .animated-underline:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .feature-chip {
+            background-color: rgba(156, 92, 255, 0.15);
+            border-radius: 16px;
+            padding: 4px 12px;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            margin: 4px;
+            transition: all 0.3s ease;
+        }
+        .feature-chip:hover {
+            background-color: rgba(156, 92, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        .feature-chip i {
+            margin-right: 6px;
+            font-size: 1rem;
+        }
+        .phone-mockup {
+            position: absolute;
+            right: 100px;
+            bottom: 120px;
+            width: 180px;
+            height: 360px;
+            background-color: rgba(15, 23, 42, 0.7);
+            border-radius: 24px;
+            border: 8px solid #1e293b;
+            overflow: hidden;
+            transform: rotate(-5deg);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            opacity: 0.2;
+        }
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #9c5cff, #3b82f6);
+            opacity: 0.6;
+        }
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 20px;
+            background-color: #0f172a;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .floating-element {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.1;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .code-snippet {
+            position: absolute;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #9c5cff;
+            opacity: 0.07;
+            line-height: 1.3;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex flex-col p-16">
+        <!-- Header with title -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold mb-2">📱 <span class="animated-underline accent-color">Mobile 기술 스택</span></h1>
+            <div class="w-32 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full"></div>
+        </div>
+        
+        <!-- Main content section with skills -->
+        <div class="grid grid-cols-2 gap-10 mb-8">
+            <!-- Kotlin Skill -->
+            <div class="skill-card p-6 flex flex-col">
+                <div class="flex items-center mb-4">
+                    <div class="tech-icon">
+                        <i class="devicon-kotlin-plain"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-xl font-semibold mr-4">Kotlin</h2>
+                            <div class="flex">
+                                <div class="skill-block skill-filled"></div>
+                                <div class="skill-block skill-filled"></div>
+                                <div class="skill-block skill-filled"></div>
+                                <div class="skill-block skill-empty"></div>
+                                <div class="skill-block skill-empty"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="ml-4 list-disc text-gray-300 pl-4 text-sm flex-grow">
+                    <li class="mb-2">Kotlin 언어의 기본 문법과 특징을 이해하고 안드로이드 앱 개발에 활용 가능</li>
+                    <li class="mb-2">간단한 UI 구성 및 기본적인 안드로이드 컴포넌트 사용 경험 보유</li>
+                </ul>
+                <div class="mt-4 flex flex-wrap">
+                    <div class="feature-chip"><i class="fab fa-android"></i>Android SDK</div>
+                    <div class="feature-chip"><i class="fas fa-code"></i>코루틴</div>
+                    <div class="feature-chip"><i class="fas fa-window-restore"></i>Jetpack</div>
+                </div>
+            </div>
+
+            <!-- Flutter Skill -->
+            <div class="skill-card p-6 flex flex-col">
+                <div class="flex items-center mb-4">
+                    <div class="tech-icon">
+                        <i class="devicon-flutter-plain"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-xl font-semibold mr-4">Flutter</h2>
+                            <div class="flex">
+                                <div class="skill-block skill-filled"></div>
+                                <div class="skill-block skill-filled"></div>
+                                <div class="skill-block skill-filled"></div>
+                                <div class="skill-block skill-empty"></div>
+                                <div class="skill-block skill-empty"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="ml-4 list-disc text-gray-300 pl-4 text-sm flex-grow">
+                    <li class="mb-2">크로스 플랫폼 앱 개발 프레임워크 개념 이해 및 Dart 언어 기본 문법 활용 가능</li>
+                    <li class="mb-2">위젯(Widget) 기반의 UI 개발 및 기본적인 상태 관리 경험 보유</li>
+                </ul>
+                <div class="mt-4 flex flex-wrap">
+                    <div class="feature-chip"><i class="fas fa-cubes"></i>위젯</div>
+                    <div class="feature-chip"><i class="fas fa-random"></i>상태 관리</div>
+                    <div class="feature-chip"><i class="fas fa-th"></i>Material Design</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile development highlights -->
+        <div class="bg-opacity-40 bg-gray-800 rounded-lg p-5 border-l-4 border-purple-400 mb-4">
+            <h3 class="text-lg font-medium mb-3 text-purple-300">모바일 개발 핵심 역량</h3>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="flex items-center">
+                    <i class="fas fa-mobile-alt mr-2 text-purple-300"></i>
+                    <span>반응형 UI 설계</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-compress-arrows-alt mr-2 text-purple-300"></i>
+                    <span>크로스 플랫폼 개발</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-database mr-2 text-purple-300"></i>
+                    <span>로컬 데이터 관리</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Projects using mobile technologies -->
+        <div class="bg-opacity-30 bg-gray-800 rounded-lg p-4">
+            <h3 class="text-md font-medium mb-2 text-purple-200">
+                <i class="fas fa-project-diagram mr-2"></i>
+                모바일 기술 활용 프로젝트
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 bg-purple-900 bg-opacity-30 p-2 rounded-full mr-2">
+                        <i class="fas fa-bus text-purple-300"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium">BUSS</p>
+                        <p class="text-xs text-gray-400">Flutter, Firebase를 활용한 버스 도착 정보 알림 앱</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 bg-purple-900 bg-opacity-30 p-2 rounded-full mr-2">
+                        <i class="fas fa-balance-scale text-purple-300"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium">ABTwin</p>
+                        <p class="text-xs text-gray-400">Kotlin, Firebase를 활용한 모바일 밸런스 게임 앱</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Visual elements -->
+        <div class="phone-mockup">
+            <div class="phone-screen"></div>
+            <div class="phone-notch"></div>
+        </div>
+        
+        <div class="floating-element" style="top: 150px; right: 300px; font-size: 2.5rem;">
+            <i class="fab fa-react text-purple-300"></i>
+        </div>
+        <div class="floating-element" style="top: 250px; right: 350px; font-size: 3rem; animation-delay: 2s;">
+            <i class="fab fa-android text-green-300"></i>
+        </div>
+        <div class="floating-element" style="top: 200px; right: 250px; font-size: 2rem; animation-delay: 4s;">
+            <i class="fab fa-apple text-gray-300"></i>
+        </div>
+        
+        <!-- Footer with page indicator -->
+        <div class="mt-auto text-right">
+            <p class="text-gray-400 text-sm">6 / 8</p>
+        </div>
+    </div>
+</body>
+</html>
