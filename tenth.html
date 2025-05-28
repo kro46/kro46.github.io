@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트러블슈팅 경험 Part 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #0d1117;
+            color: #e6edf3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+        .project-card {
+            background-color: rgba(30, 41, 59, 0.7);
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            border-left: 4px solid;
+            margin-bottom: 25px;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .trouble-build { border-color: #3b82f6; }
+        .trouble-vector { border-color: #8b5cf6; }
+        
+        .animated-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .animated-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #3b82f6;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.5s ease;
+        }
+        .animated-underline:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .project-icon {
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            margin-right: 15px;
+        }
+        .trouble-status {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .solution-box {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 3px solid #22c55e;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 6px;
+        }
+        .section-detail {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+        .code-snippet {
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 6px;
+            padding: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: #22c55e;
+            margin: 8px 0;
+            border-left: 3px solid #22c55e;
+        }
+        .metric-improvement {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 3px;
+        }
+        .warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 8px 0;
+            font-size: 0.85rem;
+        }
+        .insights-box {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide p-10">
+        <!-- Header with title -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold mb-2">🔧 <span class="animated-underline text-blue-400">Troubleshooting Experience Part 2</span></h1>
+            <div class="w-32 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+            <p class="text-sm text-gray-400 mt-3">시스템 안정성과 성능 최적화를 위한 고급 문제 해결 (2/2)</p>
+        </div>
+        
+        <!-- WorkQueue Notification Order Issue -->
+        <div class="project-card trouble-build p-6">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center">
+                    <div class="project-icon bg-blue-900 bg-opacity-30 text-blue-400">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-blue-400">WorkQueue 알림 순서 문제</h3>
+                        <span class="text-sm text-gray-400">ABTwin Project - 게임 알림 시스템</span>
+                    </div>
+                </div>
+                <span class="trouble-status">Medium</span>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div>
+                    <div class="section-detail">
+                        <h4 class="text-lg font-medium text-blue-300 mb-3">🚨 Problem Situation</h4>
+                        <p class="text-sm text-gray-300 mb-3">
+                            Android WorkManager로 게임 알림을 전송할 때 메시지가 순서대로 전달되지 않아 
+                            게임 진행 상황을 사용자가 제대로 파악할 수 없는 문제가 발생했습니다.
+                        </p>
+                        <div class="warning-box">
+                            <strong class="text-yellow-400">⚠️ 주요 증상:</strong><br>
+                            • 게임 종료 알림이 시작 알림보다 먼저 도착<br>
+                            • 라운드 결과가 뒤섞여서 사용자 혼란 발생<br>
+                            • Firebase FCM 전송 순서 무작위<br>
+                            • 게임 UX 저하 및 사용자 이탈 증가
+                        </div>
+                        
+                        <h4 class="text-lg font-medium text-blue-300 mb-3 mt-4">🔍 Root Cause Analysis</h4>
+                        <p class="text-sm text-gray-300">
+                            <strong class="text-blue-300">근본 원인:</strong> WorkManager의 병렬 처리 특성과 스레드 우선순위 미설정으로 인해 
+                            여러 Worker가 동시 실행되어 알림 순서 보장 불가
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section-detail">
+                        <h4 class="text-lg font-medium text-green-300 mb-3">🔧 Solution Process</h4>
+                        
+                        <div class="solution-box">
+                            <strong class="text-green-200 mb-2 block">해결 방법: WorkRequest Chaining으로 순차 실행</strong>
+                            <p class="text-sm text-gray-300 mb-3">
+                                WorkManager의 chaining 기능을 활용하여 알림 작업들을 순차적으로 실행하도록 변경
+                            </p>
+                            
+                            <div class="code-snippet">
+// Before: 병렬 처리 (순서 보장 안됨)
+WorkManager.getInstance(context).enqueue(workRequest1)
+WorkManager.getInstance(context).enqueue(workRequest2)
+
+// After: 순차 실행 보장
+val workRequests = notifications.mapIndexed { index, notification ->
+    OneTimeWorkRequestBuilder<NotificationWorker>()
+        .setInputData(workDataOf(
+            "message" to notification.message,
+            "sequence" to index
+        ))
+        .build()
+}
+
+var continuation = WorkManager.getInstance(context)
+    .beginWith(workRequests.first())
+workRequests.drop(1).forEach { request ->
+    continuation = continuation.then(request)
+}
+continuation.enqueue()
+                            </div>
+                            
+                            <p class="text-xs text-gray-400 mt-2">
+                                beginWith()와 then()을 활용하여 첫 번째 작업 완료 후 다음 작업 순차 실행
+                            </p>
+                        </div>
+                        
+                        <h4 class="text-lg font-medium text-blue-300 mb-3 mt-4">📊 Performance Impact</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <div class="metric-improvement">알림 순서 100% 보장</div>
+                            <div class="metric-improvement">게임 UX 개선</div>
+                            <div class="metric-improvement">사용자 만족도 ↑</div>
+                            <div class="metric-improvement">이탈률 감소</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vector Search Issue -->
+        <div class="project-card trouble-vector p-6">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center">
+                    <div class="project-icon bg-purple-900 bg-opacity-30 text-purple-400">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-purple-400">벡터 검색 응답 지연 문제</h3>
+                        <span class="text-sm text-gray-400">MCPanda Project - AI 추천 시스템</span>
+                    </div>
+                </div>
+                <span class="trouble-status">High</span>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div>
+                    <div class="section-detail">
+                        <h4 class="text-lg font-medium text-purple-300 mb-3">🚨 Problem Situation</h4>
+                        <p class="text-sm text-gray-300 mb-3">
+                            MongoDB Vector DB의 유사도 검색이 데이터량 증가(1만→10만 벡터)에 따라 
+                            응답 속도가 급격히 저하되어 사용자 경험에 심각한 영향을 미쳤습니다.
+                        </p>
+                        <div class="warning-box">
+                            <strong class="text-yellow-400">⚠️ 주요 증상:</strong><br>
+                            • 검색 응답시간 200ms → 5초로 25배 증가<br>
+                            • 사용자 이탈률 60% 증가<br>
+                            • AI 추천 시스템 실시간성 저하<br>
+                            • 서버 CPU 사용률 90% 지속
+                        </div>
+                        
+                        <h4 class="text-lg font-medium text-blue-300 mb-3 mt-4">🔍 Root Cause Analysis</h4>
+                        <p class="text-sm text-gray-300">
+                            <strong class="text-blue-300">근본 원인:</strong> 벡터 데이터 증가에 따른 선형 검색 알고리즘의 한계, 
+                            인덱스 최적화 부재 및 캐싱 전략 미구현
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section-detail">
+                        <h4 class="text-lg font-medium text-green-300 mb-3">🔧 Solution Process</h4>
+                        
+                        <div class="solution-box">
+                            <strong class="text-green-200 mb-2 block">해결 방법: 벡터 인덱스 최적화 + Redis 캐싱</strong>
+                            <p class="text-sm text-gray-300 mb-3">
+                                HNSW 알고리즘 기반 벡터 인덱스와 Redis 캐싱으로 검색 성능 대폭 개선
+                            </p>
+                            
+                            <div class="code-snippet">
+# MongoDB Vector Search Index 생성
+db.vectors.createIndex({
+    "embedding": "vectorSearch"
+}, {
+    "vectorSearchOptions": {
+        "dimensions": 768,
+        "similarity": "cosine"
+    }
+})
+
+# Redis 캐싱 전략
+cache_key = f"search:{query_hash}"
+cached_result = redis_client.get(cache_key)
+if cached_result:
+    return json.loads(cached_result)
+
+# PCA 차원 축소 (768 → 256)
+reduced_vector = pca.transform(normalized_vector)
+                            </div>
+                            
+                            <p class="text-xs text-gray-400 mt-2">
+                                HNSW 인덱스로 검색 성능 10배 향상, 인기 검색어 80%를 캐시로 처리
+                            </p>
+                        </div>
+                        
+                        <h4 class="text-lg font-medium text-blue-300 mb-3 mt-4">📊 Performance Impact</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <div class="metric-improvement">검색 속도 95% ↑</div>
+                            <div class="metric-improvement">캐시 적중률 80%</div>
+                            <div class="metric-improvement">사용자 만족도 향상</div>
+                            <div class="metric-improvement">CPU 사용률 정상화</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Insights Section -->
+        <div class="insights-box">
+            <h3 class="text-lg font-medium mb-3 text-green-300">
+                <i class="fas fa-lightbulb mr-2"></i>
+                핵심 인사이트 & 학습된 교훈
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div>
+                    <h4 class="font-medium text-green-200 mb-2">🎯 문제 해결 방법론</h4>
+                    <ul class="text-gray-300 space-y-1 text-xs">
+                        <li>• <strong>근본 원인 분석:</strong> 로그 분석과 모니터링을 통한 정확한 원인 파악</li>
+                        <li>• <strong>단계적 접근:</strong> 우선순위에 따른 순차적 해결책 적용</li>
+                        <li>• <strong>성능 지표 기반:</strong> 정량적 개선 효과 측정 및 검증</li>
+                        <li>• <strong>재발 방지:</strong> 근본적 해결책과 모니터링 체계 구축</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-medium text-green-200 mb-2">💡 기술적 역량 강화</h4>
+                    <ul class="text-gray-300 space-y-1 text-xs">
+                        <li>• <strong>시스템 아키텍처:</strong> 확장 가능하고 안정적인 시스템 설계 능력</li>
+                        <li>• <strong>성능 최적화:</strong> 병목점 식별 및 효율적인 개선 방안 도출</li>
+                        <li>• <strong>인프라 운영:</strong> CI/CD 파이프라인 안정성 확보 경험</li>
+                        <li>• <strong>AI/ML 시스템:</strong> 대용량 데이터 처리 및 검색 성능 튜닝</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer with Navigation buttons -->
+        <div class="mt-8 flex justify-between items-center"> 
+            <!-- Previous Button -->
+            <a href="ninth.html" 
+            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+                <i class="fas fa-arrow-left"></i>
+                <span>PREV (Part 1)</span>
+            </a>
+
+            <!-- Home Button -->
+            <a href="index.html" 
+            class="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-lg shadow-sm hover:from-blue-600 hover:to-purple-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50 transition-all duration-300">
+                <i class="fas fa-home"></i>
+                <span>HOME</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트러블슈팅 경험 Part 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #0d1117;
+            color: #e6edf3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+        .project-card {
+            background-color: rgba(30, 41, 59, 0.7);
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            border-left: 4px solid;
+            margin-bottom: 25px;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .trouble-cors { border-color: #ef4444; }
+        .trouble-async { border-color: #f59e0b; }
+        
+        .animated-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .animated-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #ef4444;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.5s ease;
+        }
+        .animated-underline:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .project-icon {
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            margin-right: 15px;
+        }
+        .trouble-status {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .solution-box {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 3px solid #22c55e;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 6px;
+        }
+        .section-detail {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+        .code-snippet {
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 6px;
+            padding: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: #22c55e;
+            margin: 8px 0;
+            border-left: 3px solid #22c55e;
+        }
+        .metric-improvement {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 3px;
+        }
+        .warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 8px 0;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide p-10">
+        <!-- Header with title -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold mb-2">🚨 <span class="animated-underline text-red-400">Troubleshooting Experience Part 1</span></h1>
+            <div class="w-32 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"></div>
+            <p class="text-sm text-gray-400 mt-3">실무에서 마주한 핵심 문제들과 효율적인 해결 과정 (1/2)</p>
+        </div>
+        
+        <!-- CORS Error Issue -->
+        <div class="project-card trouble-cors p-6">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center">
+                    <div class="project-icon bg-red-900 bg-opacity-30 text-red-400">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-red-400">CORS 에러 발생 문제</h3>
+                        <span class="text-sm text-gray-400">Myonitoring Project - Frontend ↔ Backend 통신</span>
+                    </div>
+                </div>
+                <span class="trouble-status">Critical</span>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div>
+                    <div class="section-detail">
+                        <h4 class="text-lg font-medium text-red-300 mb-3">🚨 Problem Situation</h4>
+                        <p class="text-sm text-gray-300 mb-3">
+                            프론트엔드에서 백엔드 API 호출 시 CORS 에러로 인해 모든 HTTP 요청이 차단되어 
+                            애플리케이션이 정상적으로 작동하지 않는 심각한 문제가 발생했습니다.
+                        </p>
+                        <div class="warning-box">
+                            <strong class="text-yellow-400">⚠️ 주요 증상:</strong><br>
+                            • "Access to fetch at ... from origin ... has been blocked by CORS policy"<br>
+                            • 모든 API 호출 실패로 데이터 로딩 불가<br>
+                            • 사용자 로그인 및 인증 기능 완전 중단<br>
+                            • 실시간 모니터링 데이터 수신 불가
+                        </div>
+                        
+                        <h4 class="text-lg font-medium text-blue-300 mb-3 mt-4">🔍 Root Cause Analysis</h4>
+                        <p class="text-sm text-gray-300">
+                            <strong class="text-blue-300">근본 원인:</strong> nginx.conf 파일과 백엔드의 application.properties에서 
+                            CORS 설정을 동시에 처리하여 중복 헤더가 발생하고 브라우저에서 이를 거부
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section-detail">
+                        <h4 class="text-lg font-medium text-green-300 mb-3">🔧 Solution Process</h4>
+                        
+                        <div class="solution-box">
+                            <strong class="text-green-200 mb-2 block">해결 방법: Nginx CORS 설정 제거</strong>
+                            <p class="text-sm text-gray-300 mb-3">
+                                중복되는 CORS 설정을 제거하여 백엔드에서만 CORS를 처리하도록 변경
+                            </p>
+                            
+                            <div class="code-snippet">
+# nginx.conf - CORS 설정 제거 전/후
+# Before (문제 상황)
+location /api/ {
+    add_header 'Access-Control-Allow-Origin' '*';
+    add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE';
+    proxy_pass http://backend:8080/;
+}
+
+# After (해결 후)
+location /api/ {
+    proxy_pass http://backend:8080/;
+    # CORS 설정 완전 제거
+}
+                            </div>
+                            
+                            <p class="text-xs text-gray-400 mt-2">
+                                백엔드 application.properties의 CORS 설정만 유지하여 일관된 정책 적용
+                            </p>
+                        </div>
+                        
+                        <h4 class="text-lg font-medium text-blue-300 mb-3 mt-4">📊 Performance Impact</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <div class="metric-improvement">API 호출 성공률 100%</div>
+                            <div class="metric-improvement">CORS 에러 0건</div>
+                            <div class="metric-improvement">사용자 로그인 정상화</div>
+                            <div class="metric-improvement">실시간 데이터 수신</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Async Processing Issue -->
+        <div class="project-card trouble-async p-6">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center">
+                    <div class="project-icon bg-yellow-900 bg-opacity-30 text-yellow-400">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-yellow-400">순차 처리로 인한 대기시간 문제</h3>
+                        <span class="text-sm text-gray-400">OmyPIc Project - 음성 AI 변환 서비스</span>
+                    </div>
+                </div>
+                <span class="trouble-status">High</span>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div>
+                    <div class="section-detail">
+                        <h4 class="text-lg font-medium text-yellow-300 mb-3">🚨 Problem Situation</h4>
+                        <p class="text-sm text-gray-300 mb-3">
+                            음성 변환 작업이 순차적으로 처리되어 다중 사용자 접속 시 
+                            대기시간이 누적되면서 사용자 경험이 급격히 저하되는 문제가 발생했습니다.
+                        </p>
+                        <div class="warning-box">
+                            <strong class="text-yellow-400">⚠️ 주요 증상:</strong><br>
+                            • 사용자 1명당 평균 3분 처리 시간<br>
+                            • 5명 동시 접속 시 마지막 사용자 15분 대기<br>
+                            • 사용자 이탈률 70% 증가<br>
+                            • 서버 리소스 활용률 25% (대부분 대기 상태)
+                        </div>
+                        
+                        <h4 class="text-lg font-medium text-blue-300 mb-3 mt-4">🔍 Root Cause Analysis</h4>
+                        <p class="text-sm text-gray-300">
+                            <strong class="text-blue-300">근본 원인:</strong> 동기식 처리 방식으로 인해 한 번에 하나의 음성 변환 작업만 처리 가능하여 
+                            사용자별 대기시간이 선형적으로 증가
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section-detail">
+                        <h4 class="text-lg font-medium text-green-300 mb-3">🔧 Solution Process</h4>
+                        
+                        <div class="solution-box">
+                            <strong class="text-green-200 mb-2 block">해결 방법: Celery + Redis 비동기 작업 큐 도입</strong>
+                            <p class="text-sm text-gray-300 mb-3">
+                                작업 큐 시스템을 통해 여러 음성 변환 작업을 병렬로 처리할 수 있는 환경 구축
+                            </p>
+                            
+                            <div class="code-snippet">
+# 비동기 작업 큐 설정
+@app.task
+def process_audio_task(audio_file_path, user_id):
+    result = audio_converter.convert(audio_file_path)
+    return {'status': 'SUCCESS', 'result': result}
+
+# 워커 프로세스 다중화
+celery -A app.celery worker --concurrency=4
+
+# 작업 상태 실시간 추적
+task = process_audio_task.delay(file_path, user_id)
+return {"task_id": task.id, "status": "PENDING"}
+                            </div>
+                            
+                            <p class="text-xs text-gray-400 mt-2">
+                                4개의 워커 프로세스로 동시에 4개의 음성 변환 작업 병렬 처리 가능
+                            </p>
+                        </div>
+                        
+                        <h4 class="text-lg font-medium text-blue-300 mb-3 mt-4">📊 Performance Impact</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <div class="metric-improvement">대기시간 80% ↓</div>
+                            <div class="metric-improvement">동시 처리 4배 ↑</div>
+                            <div class="metric-improvement">사용자 만족도 향상</div>
+                            <div class="metric-improvement">서버 활용률 90%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer with Navigation buttons -->
+        <div class="mt-8 flex justify-between items-center"> 
+            <!-- Previous Button -->
+            <a href="eighth.html" 
+            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+                <i class="fas fa-arrow-left"></i>
+                <span>PREV</span>
+            </a>
+
+            <!-- Next Button -->
+            <a href="tenth.html" 
+            class="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-red-500 to-yellow-500 text-white font-semibold rounded-lg shadow-sm hover:from-red-600 hover:to-yellow-600 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-opacity-50 transition-all duration-300">
+                <span>NEXT (Part 2)</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
