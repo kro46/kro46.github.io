@@ -1,34 +1,87 @@
-/* 김성태 포트폴리오 - 공통 스타일 */
+/* 김성태 포트폴리오 - 공통 스타일 (부드럽고 밝은 디자인) */
 
 /* 기본 스타일 */
 body {
     font-family: 'Noto Sans KR', sans-serif;
-    background-color: #0d1117;
-    color: #e6edf3;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: #2d3748;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    position: relative;
 }
 
-/* 슬라이드 컨테이너 - 반응형 개선 */
+/* 배경 애니메이션 */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 배경 장식 요소 */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: backgroundFloat 20s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes backgroundFloat {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+/* 슬라이드 컨테이너 - Glassmorphism */
 .slide {
     max-width: 1280px;
     width: 100%;
     min-height: 720px;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
     margin: 20px;
     padding: 1rem;
+    animation: slideIn 0.6s ease-out;
+    z-index: 1;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* 강조 색상 */
 .accent-color {
-    color: #58a6ff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
 }
 
 /* 스킬 블록 */
@@ -36,32 +89,87 @@ body {
     width: 50px;
     height: 24px;
     margin-right: 4px;
-    border-radius: 4px;
+    border-radius: 12px;
     display: inline-block;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-block::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.skill-block:hover::before {
+    width: 100px;
+    height: 100px;
 }
 
 .skill-filled {
-    background-color: #58a6ff;
-    box-shadow: 0 0 8px rgba(88, 166, 255, 0.5);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow:
+        0 4px 15px rgba(102, 126, 234, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.skill-filled:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+        0 6px 20px rgba(102, 126, 234, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .skill-empty {
-    background-color: #2D3748;
-    opacity: 0.5;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* 스킬 카드 */
+/* 스킬 카드 - Glassmorphism */
 .skill-card {
-    background-color: rgba(30, 41, 59, 0.7);
-    border-left: 4px solid #58a6ff;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-left: 4px solid transparent;
+    border-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-image-slice: 1;
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow:
+        0 8px 32px 0 rgba(31, 38, 135, 0.2),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.skill-card:hover::before {
+    left: 100%;
 }
 
 .skill-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+        0 15px 40px 0 rgba(102, 126, 234, 0.4),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
 }
 
 /* 기술 아이콘 */
@@ -73,10 +181,25 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(30, 41, 59, 0.9);
-    border-radius: 12px;
-    color: #58a6ff;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #667eea;
     text-align: center;
+    box-shadow: 0 8px 16px rgba(102, 126, 234, 0.2);
+    transition: all 0.3s ease;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+.tech-icon:hover {
+    transform: translateY(-5px) rotate(5deg);
+    box-shadow: 0 12px 24px rgba(102, 126, 234, 0.4);
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
 }
 
 /* 애니메이션 밑줄 */
@@ -92,10 +215,18 @@ body {
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: #58a6ff;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+    background-size: 200% 100%;
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.5s ease;
+    border-radius: 2px;
+    animation: rainbowSlide 3s linear infinite;
+}
+
+@keyframes rainbowSlide {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
 }
 
 .animated-underline:hover::after {
@@ -105,35 +236,44 @@ body {
 
 /* 연락처 아이템 */
 .contact-item {
-    transition: all 0.3s ease;
-    padding: 4px 8px;
-    border-radius: 6px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    padding: 8px 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid transparent;
 }
 
 .contact-item:hover {
-    color: #58a6ff;
-    transform: translateX(5px);
-    background: rgba(88, 166, 255, 0.1);
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(102, 126, 234, 0.5);
+    transform: translateX(10px) scale(1.05);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
-/* 코드 블록 */
+/* 코드 블록 - Glassmorphism */
 .code-block {
-    background-color: #161b22;
-    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 16px;
     padding: 1.5rem;
-    border-left: 4px solid #58a6ff;
+    border-left: 4px solid #667eea;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     font-family: 'Courier New', monospace;
     position: absolute;
     right: -60px;
     top: 50%;
     transform: translateY(-50%) translateX(120%);
     width: 45%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    opacity: 0.9;
+    box-shadow:
+        0 8px 32px 0 rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    opacity: 0.95;
     font-size: 0.85rem;
     line-height: 1.4;
-    transition: transform 0.5s ease-in-out;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     z-index: 10;
+    color: #e0e0e0;
 }
 
 .code-block.show {
@@ -147,15 +287,17 @@ body {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    background: linear-gradient(135deg, #58a6ff, #4a9eff);
+    background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     border: none;
     width: 40px;
     height: 120px;
     cursor: pointer;
-    border-radius: 8px 0 0 8px;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+    border-radius: 12px 0 0 12px;
+    box-shadow:
+        -4px 0 15px rgba(102, 126, 234, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     z-index: 20;
     display: flex;
     align-items: center;
@@ -167,13 +309,16 @@ body {
 }
 
 .slide-button:hover {
-    background: linear-gradient(135deg, #4a9eff, #3d8bff);
-    width: 45px;
-    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #764ba2, #f093fb);
+    width: 50px;
+    box-shadow:
+        -6px 0 25px rgba(102, 126, 234, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    transform: translateY(-50%) scale(1.05);
 }
 
 .slide-button.active {
-    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    background: linear-gradient(135deg, #f093fb, #f5576c);
 }
 
 /* 프로필 컨테이너 */
@@ -183,30 +328,56 @@ body {
     height: 130px;
     overflow: hidden;
     border-radius: 50%;
-    border: 4px solid #58a6ff;
-    box-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
-    background: linear-gradient(135deg, #30363d, #21262d);
+    border: 4px solid transparent;
+    background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(135deg, #667eea, #764ba2, #f093fb) border-box;
+    box-shadow:
+        0 0 30px rgba(102, 126, 234, 0.6),
+        inset 0 0 20px rgba(255, 255, 255, 0.2);
     animation: profilePulse 3s ease-in-out infinite;
 }
 
 @keyframes profilePulse {
     0%, 100% {
-        box-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+        box-shadow:
+            0 0 30px rgba(102, 126, 234, 0.6),
+            inset 0 0 20px rgba(255, 255, 255, 0.2);
         transform: scale(1);
     }
     50% {
-        box-shadow: 0 0 30px rgba(88, 166, 255, 0.8);
+        box-shadow:
+            0 0 50px rgba(118, 75, 162, 0.8),
+            0 0 80px rgba(240, 147, 251, 0.4),
+            inset 0 0 30px rgba(255, 255, 255, 0.3);
         transform: scale(1.05);
     }
 }
 
+.profile-container::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    background-size: 200% 200%;
+    animation: rotateBorder 3s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotateBorder {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 /* 페이드 효과 */
 #headerSection {
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out, filter 0.5s ease;
 }
 
 #headerSection.dimmed {
-    opacity: 0.2;
+    opacity: 0.3;
+    filter: blur(2px);
 }
 
 /* 페이지 인디케이터 */
@@ -214,7 +385,14 @@ body {
     text-align: center;
     margin-top: 1rem;
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #667eea;
+    font-weight: 600;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
 }
 
 /* 반응형 디자인 */
@@ -224,6 +402,7 @@ body {
         margin: 10px;
         padding: 2rem;
         min-height: auto;
+        border-radius: 16px;
     }
 
     .code-block {
@@ -248,6 +427,7 @@ body {
     .slide {
         padding: 1rem;
         margin: 5px;
+        border-radius: 12px;
     }
 
     h1 {
@@ -283,4 +463,35 @@ body {
         width: 100px;
         height: 100px;
     }
+}
+
+/* 추가 애니메이션 효과 */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #764ba2, #f093fb);
 }
