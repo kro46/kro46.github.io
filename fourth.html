@@ -3,73 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>데이터베이스 기술 스택</title>
+    <meta name="description" content="김성태의 데이터베이스 기술 스택 - MySQL, MongoDB, Redis, Firestore를 활용한 데이터 관리 경험">
+    <meta property="og:title" content="데이터베이스 기술 스택 - 김성태 포트폴리오">
+    <meta property="og:description" content="관계형 DB, NoSQL, In-Memory DB 등 다양한 데이터베이스 활용 경험">
+    <title>데이터베이스 기술 스택 - 김성태</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #0d1117;
-            color: #e6edf3;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .slide {
-            width: 1280px;
-            min-height: 720px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            margin: 20px;
-        }
+        /* Page-specific: Amber/Yellow color theme for Database */
         .accent-color {
             color: #f59e0b;
-        }
-        .skill-block {
-            width: 50px;
-            height: 24px;
-            margin-right: 4px;
-            border-radius: 4px;
-            display: inline-block;
-            transition: all 0.3s ease;
         }
         .skill-filled {
             background-color: #f59e0b;
             box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
         }
-        .skill-empty {
-            background-color: #2D3748;
-            opacity: 0.5;
-        }
         .skill-card {
-            background-color: rgba(30, 41, 59, 0.7);
             border-left: 4px solid #f59e0b;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         .tech-icon {
-            font-size: 2.5rem;
-            margin-right: 1rem;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(30, 41, 59, 0.9);
-            border-radius: 12px;
             color: #f59e0b;
-            text-align: center;
         }
         .tech-icon.mysql {
             color: #4479a1;
@@ -89,25 +45,8 @@
         .devicon-firebase-plain {
             font-size: 2.5rem !important;
         }
-        .animated-underline {
-            position: relative;
-            display: inline-block;
-        }
         .animated-underline::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 100%;
-            height: 3px;
             background-color: #f59e0b;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.5s ease;
-        }
-        .animated-underline:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
         }
         .db-schema {
             position: absolute;
@@ -141,19 +80,19 @@
             <h1 class="text-4xl font-bold mb-2">🗄️ <span class="animated-underline accent-color">Database 기술 스택</span></h1>
             <div class="w-32 h-1 bg-gradient-to-r from-yellow-500 to-amber-600 rounded-full"></div>
         </div>
-        
+
         <!-- Main content section with skills -->
         <div class="grid grid-cols-2 gap-4">
             <!-- MySQL Skill -->
             <div class="skill-card p-5">
                 <div class="flex items-center mb-3">
-                    <div class="tech-icon mysql">
-                        <i class="devicon-mysql-original"></i>
+                    <div class="tech-icon mysql" role="img" aria-label="MySQL">
+                        <i class="devicon-mysql-original" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex justify-between items-center">
                             <h2 class="text-xl font-semibold">MySQL</h2>
-                            <div class="flex">
+                            <div class="flex" role="meter" aria-label="Skill level: 3 out of 5">
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
@@ -172,13 +111,13 @@
             <!-- MongoDB Skill -->
             <div class="skill-card p-5">
                 <div class="flex items-center mb-3">
-                    <div class="tech-icon mongodb">
-                        <i class="devicon-mongodb-plain"></i>
+                    <div class="tech-icon mongodb" role="img" aria-label="MongoDB">
+                        <i class="devicon-mongodb-plain" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex justify-between items-center">
                             <h2 class="text-xl font-semibold">MongoDB</h2>
-                            <div class="flex">
+                            <div class="flex" role="meter" aria-label="Skill level: 3 out of 5">
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
@@ -197,13 +136,13 @@
             <!-- Redis Skill -->
             <div class="skill-card p-5">
                 <div class="flex items-center mb-3">
-                    <div class="tech-icon redis">
-                        <i class="devicon-redis-plain"></i>
+                    <div class="tech-icon redis" role="img" aria-label="Redis">
+                        <i class="devicon-redis-plain" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex justify-between items-center">
                             <h2 class="text-xl font-semibold">Redis</h2>
-                            <div class="flex">
+                            <div class="flex" role="meter" aria-label="Skill level: 2 out of 5">
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-empty"></div>
@@ -222,13 +161,13 @@
             <!-- Firestore Skill -->
             <div class="skill-card p-5">
                 <div class="flex items-center mb-3">
-                    <div class="tech-icon firestore">
-                        <i class="devicon-firebase-plain"></i>
+                    <div class="tech-icon firestore" role="img" aria-label="Firestore">
+                        <i class="devicon-firebase-plain" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex justify-between items-center">
                             <h2 class="text-xl font-semibold">Firestore</h2>
-                            <div class="flex">
+                            <div class="flex" role="meter" aria-label="Skill level: 4 out of 5">
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
@@ -244,40 +183,45 @@
                 </ul>
             </div>
         </div>
-        
+
         <!-- Database advantages section -->
         <div class="bg-opacity-40 bg-gray-800 rounded-lg p-5 border-l-4 border-amber-400 mt-6">
             <h3 class="text-lg font-medium mb-2 text-amber-300">Database 핵심 역량</h3>
             <div class="grid grid-cols-3 gap-3">
                 <div class="flex items-center">
-                    <i class="fas fa-sitemap mr-2 text-amber-300"></i>
+                    <i class="fas fa-sitemap mr-2 text-amber-300" aria-hidden="true"></i>
                     <span>데이터 모델링</span>
                 </div>
                 <div class="flex items-center">
-                    <i class="fas fa-tachometer-alt mr-2 text-amber-300"></i>
+                    <i class="fas fa-tachometer-alt mr-2 text-amber-300" aria-hidden="true"></i>
                     <span>성능 최적화</span>
                 </div>
                 <div class="flex items-center">
-                    <i class="fas fa-memory mr-2 text-amber-300"></i>
+                    <i class="fas fa-memory mr-2 text-amber-300" aria-hidden="true"></i>
                     <span>캐싱 전략</span>
                 </div>
             </div>
         </div>
 
+        <!-- Page indicator -->
+        <div class="page-indicator">4 / 10</div>
+
         <!-- Footer with Navigation buttons -->
-        <div class="mt-8 flex justify-between items-center"> 
+        <div class="mt-8 flex justify-between items-center">
             <!-- Previous Button -->
-            <a href="second.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
-                <i class="fas fa-arrow-left"></i>
+            <a href="third.html"
+               aria-label="Previous page: Backend Technology Stack"
+               class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i>
                 <span>PREV</span>
             </a>
 
             <!-- Next Button -->
-            <a href="fifth.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+            <a href="fifth.html"
+               aria-label="Next page: System and DevOps Technology Stack"
+               class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
                 <span>NEXT</span>
-                <i class="fas fa-arrow-right"></i> 
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
         </div>
     </div>

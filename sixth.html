@@ -3,93 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모바일 개발 기술 스택</title>
+    <meta name="description" content="김성태의 모바일 개발 기술 스택 - Kotlin, Flutter를 활용한 Android 및 크로스 플랫폼 앱 개발 경험">
+    <meta property="og:title" content="모바일 개발 기술 스택 - 김성태 포트폴리오">
+    <meta property="og:description" content="Android 네이티브 및 Flutter 크로스 플랫폼 모바일 애플리케이션 개발 경험">
+    <title>모바일 개발 기술 스택 - 김성태</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #0d1117;
-            color: #e6edf3;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .slide {
-            width: 1280px;
-            min-height: 720px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        }
+        /* Page-specific: Purple color theme for Mobile */
         .accent-color {
             color: #9c5cff;
-        }
-        .skill-block {
-            width: 32px;
-            height: 18px;
-            margin-right: 2px;
-            border-radius: 4px;
-            display: inline-block;
-            transition: all 0.3s ease;
         }
         .skill-filled {
             background-color: #9c5cff;
             box-shadow: 0 0 8px rgba(156, 92, 255, 0.5);
         }
-        .skill-empty {
-            background-color: #2D3748;
-            opacity: 0.5;
-        }
         .skill-card {
-            background-color: rgba(30, 41, 59, 0.7);
             border-left: 4px solid #9c5cff;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             height: 100%;
         }
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
         .tech-icon {
-            font-size: 2.5rem;
-            margin-right: 1rem;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(30, 41, 59, 0.9);
-            border-radius: 12px;
             color: #9c5cff;
-            text-align: center;
-        }
-        .animated-underline {
-            position: relative;
-            display: inline-block;
         }
         .animated-underline::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 100%;
-            height: 3px;
             background-color: #9c5cff;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.5s ease;
         }
-        .animated-underline:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
+        .skill-block {
+            width: 32px;
+            height: 18px;
+            margin-right: 2px;
         }
         .feature-chip {
             background-color: rgba(156, 92, 255, 0.15);
@@ -169,19 +114,19 @@
             <h1 class="text-4xl font-bold mb-2">📱 <span class="animated-underline accent-color">Mobile 기술 스택</span></h1>
             <div class="w-32 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full"></div>
         </div>
-        
+
         <!-- Main content section with skills -->
         <div class="grid grid-cols-2 gap-10 mb-8">
             <!-- Kotlin Skill -->
             <div class="skill-card p-6 flex flex-col">
                 <div class="flex items-center mb-4">
-                    <div class="tech-icon">
-                        <i class="devicon-kotlin-plain"></i>
+                    <div class="tech-icon" role="img" aria-label="Kotlin">
+                        <i class="devicon-kotlin-plain" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex justify-between items-center">
                             <h2 class="text-xl font-semibold mr-4">Kotlin</h2>
-                            <div class="flex">
+                            <div class="flex" role="meter" aria-label="Skill level: 3 out of 5">
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
@@ -196,22 +141,22 @@
                     <li class="mb-2">간단한 UI 구성 및 기본적인 안드로이드 컴포넌트 사용 경험 보유</li>
                 </ul>
                 <div class="mt-4 flex flex-wrap">
-                    <div class="feature-chip"><i class="fab fa-android"></i>Android SDK</div>
-                    <div class="feature-chip"><i class="fas fa-code"></i>코루틴</div>
-                    <div class="feature-chip"><i class="fas fa-window-restore"></i>Jetpack</div>
+                    <div class="feature-chip"><i class="fab fa-android" aria-hidden="true"></i>Android SDK</div>
+                    <div class="feature-chip"><i class="fas fa-code" aria-hidden="true"></i>코루틴</div>
+                    <div class="feature-chip"><i class="fas fa-window-restore" aria-hidden="true"></i>Jetpack</div>
                 </div>
             </div>
 
             <!-- Flutter Skill -->
             <div class="skill-card p-6 flex flex-col">
                 <div class="flex items-center mb-4">
-                    <div class="tech-icon">
-                        <i class="devicon-flutter-plain"></i>
+                    <div class="tech-icon" role="img" aria-label="Flutter">
+                        <i class="devicon-flutter-plain" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex justify-between items-center">
                             <h2 class="text-xl font-semibold mr-4">Flutter</h2>
-                            <div class="flex">
+                            <div class="flex" role="meter" aria-label="Skill level: 3 out of 5">
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
@@ -226,42 +171,42 @@
                     <li class="mb-2">위젯(Widget) 기반의 UI 개발 및 기본적인 상태 관리 경험 보유</li>
                 </ul>
                 <div class="mt-4 flex flex-wrap">
-                    <div class="feature-chip"><i class="fas fa-cubes"></i>위젯</div>
-                    <div class="feature-chip"><i class="fas fa-random"></i>상태 관리</div>
-                    <div class="feature-chip"><i class="fas fa-th"></i>Material Design</div>
+                    <div class="feature-chip"><i class="fas fa-cubes" aria-hidden="true"></i>위젯</div>
+                    <div class="feature-chip"><i class="fas fa-random" aria-hidden="true"></i>상태 관리</div>
+                    <div class="feature-chip"><i class="fas fa-th" aria-hidden="true"></i>Material Design</div>
                 </div>
             </div>
         </div>
-        
+
         <!-- Mobile development highlights -->
         <div class="bg-opacity-40 bg-gray-800 rounded-lg p-5 border-l-4 border-purple-400 mb-4">
             <h3 class="text-lg font-medium mb-3 text-purple-300">모바일 개발 핵심 역량</h3>
             <div class="grid grid-cols-3 gap-4">
                 <div class="flex items-center">
-                    <i class="fas fa-mobile-alt mr-2 text-purple-300"></i>
+                    <i class="fas fa-mobile-alt mr-2 text-purple-300" aria-hidden="true"></i>
                     <span>반응형 UI 설계</span>
                 </div>
                 <div class="flex items-center">
-                    <i class="fas fa-compress-arrows-alt mr-2 text-purple-300"></i>
+                    <i class="fas fa-compress-arrows-alt mr-2 text-purple-300" aria-hidden="true"></i>
                     <span>크로스 플랫폼 개발</span>
                 </div>
                 <div class="flex items-center">
-                    <i class="fas fa-database mr-2 text-purple-300"></i>
+                    <i class="fas fa-database mr-2 text-purple-300" aria-hidden="true"></i>
                     <span>로컬 데이터 관리</span>
                 </div>
             </div>
         </div>
-        
+
         <!-- Projects using mobile technologies -->
         <div class="bg-opacity-30 bg-gray-800 rounded-lg p-4">
             <h3 class="text-md font-medium mb-2 text-purple-200">
-                <i class="fas fa-project-diagram mr-2"></i>
+                <i class="fas fa-project-diagram mr-2" aria-hidden="true"></i>
                 모바일 기술 활용 프로젝트
             </h3>
             <div class="grid grid-cols-2 gap-4">
                 <div class="flex items-start">
                     <div class="flex-shrink-0 bg-purple-900 bg-opacity-30 p-2 rounded-full mr-2">
-                        <i class="fas fa-bus text-purple-300"></i>
+                        <i class="fas fa-bus text-purple-300" aria-hidden="true"></i>
                     </div>
                     <div>
                         <p class="text-sm font-medium">BUSS</p>
@@ -270,7 +215,7 @@
                 </div>
                 <div class="flex items-start">
                     <div class="flex-shrink-0 bg-purple-900 bg-opacity-30 p-2 rounded-full mr-2">
-                        <i class="fas fa-balance-scale text-purple-300"></i>
+                        <i class="fas fa-balance-scale text-purple-300" aria-hidden="true"></i>
                     </div>
                     <div>
                         <p class="text-sm font-medium">ABTwin</p>
@@ -279,21 +224,26 @@
                 </div>
             </div>
         </div>
-        
+
+        <!-- Page indicator -->
+        <div class="page-indicator">6 / 10</div>
+
         <!-- Footer with Navigation buttons -->
-        <div class="mt-8 flex justify-between items-center"> 
+        <div class="mt-8 flex justify-between items-center">
             <!-- Previous Button -->
-            <a href="fifth.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
-                <i class="fas fa-arrow-left"></i>
+            <a href="fifth.html"
+               aria-label="Previous page: System and DevOps Technology Stack"
+               class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i>
                 <span>PREV</span>
             </a>
 
             <!-- Next Button -->
-            <a href="seventh.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+            <a href="seventh.html"
+               aria-label="Next page: Awards and Education"
+               class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
                 <span>NEXT</span>
-                <i class="fas fa-arrow-right"></i> 
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
         </div>
     </div>

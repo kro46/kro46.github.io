@@ -3,97 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="백엔드/시스템 엔지니어 김성태의 포트폴리오. 하루 1% 성장하는 개발자의 기술 스택과 프로젝트를 소개합니다.">
+    <meta name="keywords" content="백엔드 개발자, 시스템 엔지니어, 김성태, 포트폴리오, Backend Engineer, System Engineer">
+    <meta name="author" content="김성태">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="김성태 - Backend / System Engineer Portfolio">
+    <meta property="og:description" content="하루 1% 성장하는 백엔드/시스템 엔지니어 김성태의 포트폴리오">
+    <meta property="og:url" content="https://kro46.github.io">
+
     <title>백엔드/시스템 엔지니어 포트폴리오 - 김성태</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #0d1117;
-            color: #e6edf3;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .slide {
-            width: 1280px;
-            min-height: 720px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            margin: 20px;
-        }
-        .accent-color {
-            color: #58a6ff;
-        }
-        .code-block {
-            background-color: #161b22;
-            border-radius: 8px;
-            padding: 1.5rem;
-            border-left: 4px solid #58a6ff;
-            font-family: 'Courier New', monospace;
-            position: absolute;
-            right: -60px;
-            top: 50%;
-            transform: translateY(-50%) translateX(120%);
-            width: 45%;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            opacity: 0.9;
-            font-size: 0.85rem;
-            line-height: 1.4;
-            transition: transform 0.5s ease-in-out;
-            z-index: 10;
-        }
-        .code-block.show {
-            transform: translateY(-50%) translateX(0);
-            right: 40px;
-        }
-        .slide-button {
-            position: fixed;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            background: linear-gradient(135deg, #58a6ff, #4a9eff);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 120px;
-            cursor: pointer;
-            border-radius: 8px 0 0 8px;
-            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            z-index: 20;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        .slide-button:hover {
-            background: linear-gradient(135deg, #4a9eff, #3d8bff);
-            width: 45px;
-            box-shadow: -4px 0 15px rgba(0, 0, 0, 0.4);
-        }
-        .slide-button.active {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
-        }
-        .contact-item {
-            transition: all 0.3s ease;
-            padding: 4px 8px;
-            border-radius: 6px;
-        }
-        .contact-item:hover {
-            color: #58a6ff;
-            transform: translateX(5px);
-            background: rgba(88, 166, 255, 0.1);
-        }
         .animated-border {
             position: relative;
             overflow: hidden;
@@ -113,32 +38,9 @@
             50% { width: 100%; }
             100% { width: 0; }
         }
-        .profile-container {
-            position: relative;
-            width: 130px;
-            height: 130px;
-            overflow: hidden;
-            border-radius: 50%;
-            border: 4px solid #58a6ff;
-            box-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
-            background: linear-gradient(135deg, #30363d, #21262d);
-            animation: profilePulse 3s ease-in-out infinite;
-        }
-        @keyframes profilePulse {
-            0%, 100% { 
-                box-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
-                transform: scale(1);
-            }
-            50% { 
-                box-shadow: 0 0 30px rgba(88, 166, 255, 0.8);
-                transform: scale(1.05);
-            }
-        }
-        #headerSection {
-            transition: opacity 0.5s ease-in-out;
-        }
-        #headerSection.dimmed {
-            opacity: 0.2;
+        @keyframes pulse {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.1); }
         }
     </style>
 </head>
@@ -147,9 +49,9 @@
         <!-- Header section with name and title -->
         <div class="text-center mb-10" id="headerSection">
             <div class="flex justify-center items-center">
-                <div class="profile-container flex justify-center items-center">
+                <div class="profile-container flex justify-center items-center" role="img" aria-label="김성태 프로필 - 백엔드 시스템 엔지니어">
                     <div class="text-center">
-                        <i class="fas fa-code text-4xl text-gray-300 mb-2"></i>
+                        <i class="fas fa-code text-4xl text-gray-300 mb-2" aria-hidden="true"></i>
                         <div class="text-xs font-bold text-gray-400">KST</div>
                     </div>
                 </div>
@@ -161,32 +63,32 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Main content section -->
         <div class="flex justify-between items-center">
             <!-- Left side with introduction -->
             <div class="w-1/2 pr-8">
                 <p class="text-2xl mb-8 leading-relaxed italic">"안녕하세요! <br><span class="accent-color font-semibold">하루에 1%씩 꾸준히 발전중인</span><br> 개발자 김성태입니다."</p>
-                
+
                 <!-- Contact information with icons -->
                 <div class="mt-12">
                     <div class="flex items-center mb-4 contact-item">
-                        <i class="fas fa-phone accent-color mr-4 text-xl"></i>
+                        <i class="fas fa-phone accent-color mr-4 text-xl" aria-hidden="true"></i>
                         <p class="text-lg">010-3115-1042</p>
                     </div>
                     <div class="flex items-center mb-4 contact-item">
-                        <i class="fas fa-envelope accent-color mr-4 text-xl"></i>
+                        <i class="fas fa-envelope accent-color mr-4 text-xl" aria-hidden="true"></i>
                         <p class="text-lg">kst1040@gmail.com</p>
                     </div>
                     <div class="flex items-center contact-item">
-                        <i class="fab fa-github accent-color mr-4 text-xl"></i>
-                        <a class="text-lg" href="https://github.com/kro46">github.com/kro46</a>
+                        <i class="fab fa-github accent-color mr-4 text-xl" aria-hidden="true"></i>
+                        <a class="text-lg" href="https://github.com/kro46" target="_blank" rel="noopener noreferrer">github.com/kro46</a>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Right side with code block visual -->
-            <div class="code-block" id="codeBlock">
+            <div class="code-block" id="codeBlock" role="complementary" aria-label="개발 철학 코드">
                 <span class="text-green-400">// 개발 철학</span>
                 <br>
                 <span class="text-blue-400">function</span> <span class="text-yellow-300">developmentPhilosophy</span>() {
@@ -203,19 +105,25 @@
                 <br>}
             </div>
         </div>
-        
+
         <!-- Slide button -->
-        <button class="slide-button" id="slideButton" onclick="toggleCodeBlock()">
+        <button class="slide-button" id="slideButton" onclick="toggleCodeBlock()" aria-label="개발철학 토글">
             <span>개발철학</span>
         </button>
-        
-        <!-- Footer with page indicator -->
-        <div class="mt-8 text-right pr-4">
-            <a href="second.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
-                <span>NEXT</span>
-                <i class="fas fa-arrow-right"></i> <!-- Font Awesome 아이콘 -->
-            </a>
+
+        <!-- Footer with page indicator and navigation -->
+        <div class="mt-8">
+            <div class="page-indicator">
+                <span>1 / 10</span>
+            </div>
+            <div class="text-right pr-4">
+                <a href="second.html"
+                class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300"
+                aria-label="다음 페이지로 이동">
+                    <span>NEXT</span>
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -226,16 +134,14 @@
             const codeBlock = document.getElementById('codeBlock');
             const button = document.getElementById('slideButton');
             const headerSection = document.getElementById('headerSection');
-            
+
             if (!isCodeBlockVisible) {
-                // 코드 블록 보이기 & 헤더 희미하게
                 codeBlock.classList.add('show');
                 button.classList.add('active');
                 button.innerHTML = '<span>닫기</span>';
                 headerSection.classList.add('dimmed');
                 isCodeBlockVisible = true;
             } else {
-                // 코드 블록 숨기기 & 헤더 원래대로
                 codeBlock.classList.remove('show');
                 button.classList.remove('active');
                 button.innerHTML = '<span>개발철학</span>';
@@ -244,24 +150,13 @@
             }
         }
 
-        // 페이지 로드 시 애니메이션 효과
+        // 페이지 로드 시 버튼 애니메이션
         document.addEventListener('DOMContentLoaded', function() {
-            // 버튼에 살짝 흔들리는 애니메이션 추가
             const button = document.getElementById('slideButton');
             setTimeout(() => {
                 button.style.animation = 'pulse 2s ease-in-out infinite';
             }, 2000);
         });
-
-        // CSS에 pulse 애니메이션 추가
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0%, 100% { transform: translateY(-50%) scale(1); }
-                50% { transform: translateY(-50%) scale(1.1); }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>

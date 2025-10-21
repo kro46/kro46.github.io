@@ -3,32 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>수상 및 학력/경력</title>
+    <meta name="description" content="김성태의 수상 경력 및 학력 - SSAFY 우수 프로젝트상, 정보처리기사, 금오공과대학교 컴퓨터공학과 졸업">
+    <meta property="og:title" content="수상 및 학력/경력 - 김성태 포트폴리오">
+    <meta property="og:description" content="다양한 프로젝트 수상 경력과 전문 자격증, 교육 이수 현황">
+    <title>수상 및 학력/경력 - 김성태</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #0d1117;
-            color: #e6edf3;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .slide {
-            width: 1280px;
-            min-height: 720px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-        }
+        /* Page-specific: Yellow/Blue color theme for Awards/Education */
         .award-section {
             background-color: rgba(30, 41, 59, 0.7);
             border-radius: 10px;
@@ -151,7 +135,7 @@
                 <h2 class="text-3xl font-bold mb-6 text-yellow-400">
                     🏆 <span class="animated-underline">Awards / Certificates</span>
                 </h2>
-                
+
                 <div class="space-y-6">
                     <div class="award-item p-3 rounded-lg timeline-item text-yellow-400">
                         <div class="flex justify-between items-start">
@@ -160,7 +144,7 @@
                         </div>
                         <p class="text-sm text-gray-300 mt-1">삼성 청년 SW 아카데미에서 진행한 특화 프로젝트에서 우수 성과 달성</p>
                     </div>
-                    
+
                     <div class="award-item p-3 rounded-lg timeline-item text-yellow-400">
                         <div class="flex justify-between items-start">
                             <h3 class="font-medium text-lg">정보처리기사 취득</h3>
@@ -171,7 +155,7 @@
                             <span class="ml-2">소프트웨어 개발 및 IT 시스템 운영에 대한 전문성 인증</span>
                         </p>
                     </div>
-                    
+
                     <div class="award-item p-3 rounded-lg timeline-item text-yellow-400">
                         <div class="flex justify-between items-start">
                             <h3 class="font-medium text-lg">정보기술학회 하계 대학생 논문경진대회 동상</h3>
@@ -179,7 +163,7 @@
                         </div>
                         <p class="text-sm text-gray-300 mt-1">학술 연구 성과를 인정받아 대학생 논문 경진대회에서 수상</p>
                     </div>
-                    
+
                     <div class="award-item p-3 rounded-lg timeline-item text-yellow-400">
                         <div class="flex justify-between items-start">
                             <h3 class="font-medium text-lg">한국사능력검정시험 심화 1급 취득</h3>
@@ -191,23 +175,23 @@
                         </p>
                     </div>
                 </div>
-                
-                <i class="fas fa-trophy award-icon"></i>
-                
-                <div class="floating-element" style="top: 70%; left: 60%; font-size: 3rem; animation-delay: 1s;">
+
+                <i class="fas fa-trophy award-icon" aria-hidden="true"></i>
+
+                <div class="floating-element" style="top: 70%; left: 60%; font-size: 3rem; animation-delay: 1s;" aria-hidden="true">
                     <i class="fas fa-medal"></i>
                 </div>
-                <div class="floating-element" style="top: 30%; left: 70%; font-size: 2.5rem; animation-delay: 3s;">
+                <div class="floating-element" style="top: 30%; left: 70%; font-size: 2.5rem; animation-delay: 3s;" aria-hidden="true">
                     <i class="fas fa-award"></i>
                 </div>
             </div>
-            
+
             <!-- Education and Experience Section -->
             <div class="education-section p-6 relative overflow-hidden">
                 <h2 class="text-3xl font-bold mb-6 text-blue-400">
                     🎓 <span class="animated-underline">Education / Experience</span>
                 </h2>
-                
+
                 <div class="space-y-6">
                     <div class="education-item p-3 rounded-lg timeline-item text-blue-400">
                         <div class="flex justify-between items-start">
@@ -225,7 +209,7 @@
                             <span class="px-2 py-1 bg-blue-900 bg-opacity-30 text-xs rounded-full text-blue-200">팀 프로젝트</span>
                         </div>
                     </div>
-                    
+
                     <div class="education-item p-3 rounded-lg timeline-item text-blue-400">
                         <div class="flex justify-between items-start">
                             <h3 class="font-medium text-lg">금오공과대학교 컴퓨터공학과</h3>
@@ -243,32 +227,37 @@
                         </div>
                     </div>
                 </div>
-                
-                <i class="fas fa-graduation-cap education-icon"></i>
-                
-                <div class="floating-element" style="top: 60%; right: 70%; font-size: 3rem; animation-delay: 2s;">
+
+                <i class="fas fa-graduation-cap education-icon" aria-hidden="true"></i>
+
+                <div class="floating-element" style="top: 60%; right: 70%; font-size: 3rem; animation-delay: 2s;" aria-hidden="true">
                     <i class="fas fa-university"></i>
                 </div>
-                <div class="floating-element" style="top: 20%; right: 30%; font-size: 2.5rem; animation-delay: 4s;">
+                <div class="floating-element" style="top: 20%; right: 30%; font-size: 2.5rem; animation-delay: 4s;" aria-hidden="true">
                     <i class="fas fa-book"></i>
                 </div>
             </div>
         </div>
-        
+
+        <!-- Page indicator -->
+        <div class="page-indicator">7 / 10</div>
+
         <!-- Footer with Navigation buttons -->
-        <div class="mt-8 flex justify-between items-center"> 
+        <div class="mt-8 flex justify-between items-center">
             <!-- Previous Button -->
-            <a href="sixth.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
-                <i class="fas fa-arrow-left"></i>
+            <a href="sixth.html"
+               aria-label="Previous page: Mobile Technology Stack"
+               class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i>
                 <span>PREV</span>
             </a>
 
             <!-- Next Button -->
-            <a href="eighth.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+            <a href="eighth.html"
+               aria-label="Next page: Project Summary"
+               class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
                 <span>NEXT</span>
-                <i class="fas fa-arrow-right"></i> 
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
         </div>
     </div>

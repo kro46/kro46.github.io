@@ -1,0 +1,286 @@
+/* 김성태 포트폴리오 - 공통 스타일 */
+
+/* 기본 스타일 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #0d1117;
+    color: #e6edf3;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* 슬라이드 컨테이너 - 반응형 개선 */
+.slide {
+    max-width: 1280px;
+    width: 100%;
+    min-height: 720px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    margin: 20px;
+    padding: 1rem;
+}
+
+/* 강조 색상 */
+.accent-color {
+    color: #58a6ff;
+}
+
+/* 스킬 블록 */
+.skill-block {
+    width: 50px;
+    height: 24px;
+    margin-right: 4px;
+    border-radius: 4px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.skill-filled {
+    background-color: #58a6ff;
+    box-shadow: 0 0 8px rgba(88, 166, 255, 0.5);
+}
+
+.skill-empty {
+    background-color: #2D3748;
+    opacity: 0.5;
+}
+
+/* 스킬 카드 */
+.skill-card {
+    background-color: rgba(30, 41, 59, 0.7);
+    border-left: 4px solid #58a6ff;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* 기술 아이콘 */
+.tech-icon {
+    font-size: 2.5rem;
+    margin-right: 1rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(30, 41, 59, 0.9);
+    border-radius: 12px;
+    color: #58a6ff;
+    text-align: center;
+}
+
+/* 애니메이션 밑줄 */
+.animated-underline {
+    position: relative;
+    display: inline-block;
+}
+
+.animated-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #58a6ff;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.5s ease;
+}
+
+.animated-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* 연락처 아이템 */
+.contact-item {
+    transition: all 0.3s ease;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.contact-item:hover {
+    color: #58a6ff;
+    transform: translateX(5px);
+    background: rgba(88, 166, 255, 0.1);
+}
+
+/* 코드 블록 */
+.code-block {
+    background-color: #161b22;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border-left: 4px solid #58a6ff;
+    font-family: 'Courier New', monospace;
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%) translateX(120%);
+    width: 45%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    transition: transform 0.5s ease-in-out;
+    z-index: 10;
+}
+
+.code-block.show {
+    transform: translateY(-50%) translateX(0);
+    right: 40px;
+}
+
+/* 슬라이드 버튼 */
+.slide-button {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #58a6ff, #4a9eff);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 120px;
+    cursor: pointer;
+    border-radius: 8px 0 0 8px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.slide-button:hover {
+    background: linear-gradient(135deg, #4a9eff, #3d8bff);
+    width: 45px;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.slide-button.active {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+}
+
+/* 프로필 컨테이너 */
+.profile-container {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 4px solid #58a6ff;
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+    background: linear-gradient(135deg, #30363d, #21262d);
+    animation: profilePulse 3s ease-in-out infinite;
+}
+
+@keyframes profilePulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(88, 166, 255, 0.8);
+        transform: scale(1.05);
+    }
+}
+
+/* 페이드 효과 */
+#headerSection {
+    transition: opacity 0.5s ease-in-out;
+}
+
+#headerSection.dimmed {
+    opacity: 0.2;
+}
+
+/* 페이지 인디케이터 */
+.page-indicator {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+    .slide {
+        width: 100%;
+        margin: 10px;
+        padding: 2rem;
+        min-height: auto;
+    }
+
+    .code-block {
+        position: relative;
+        width: 100%;
+        right: 0;
+        transform: translateY(0);
+        margin-top: 2rem;
+    }
+
+    .code-block.show {
+        transform: translateY(0);
+        right: 0;
+    }
+
+    .slide-button {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide {
+        padding: 1rem;
+        margin: 5px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .tech-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 2rem;
+    }
+
+    .skill-block {
+        width: 30px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide {
+        padding: 0.75rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .profile-container {
+        width: 100px;
+        height: 100px;
+    }
+}

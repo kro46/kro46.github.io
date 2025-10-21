@@ -3,92 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>프론트엔드 기술 스택</title>
+    <meta name="description" content="김성태의 프론트엔드 기술 스택 - JavaScript, Vue.js, React 등 프론트엔드 개발 역량을 소개합니다.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Frontend 기술 스택 - 김성태 포트폴리오">
+    <meta property="og:description" content="JavaScript, Vue.js, React를 활용한 프론트엔드 개발 경험">
+    <title>프론트엔드 기술 스택 - 김성태</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #0d1117;
-            color: #e6edf3;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .slide {
-            width: 1280px;
-            min-height: 720px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            margin: 20px;
-        }
-        .accent-color {
-            color: #58a6ff;
-        }
-        .skill-block {
-            width: 50px;
-            height: 24px;
-            margin-right: 4px;
-            border-radius: 4px;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
         .skill-filled {
             background-color: #E53E3E;
             box-shadow: 0 0 8px rgba(229, 62, 62, 0.5);
-        }
-        .skill-empty {
-            background-color: #2D3748;
-            opacity: 0.5;
-        }
-        .skill-card {
-            background-color: rgba(30, 41, 59, 0.7);
-            border-left: 4px solid #58a6ff;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-        .tech-icon {
-            font-size: 2.5rem;
-            margin-right: 1rem;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(30, 41, 59, 0.9);
-            border-radius: 12px;
-            color: #58a6ff;
-            text-align: center;
-        }
-        .animated-underline {
-            position: relative;
-            display: inline-block;
-        }
-        .animated-underline::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: #58a6ff;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.5s ease;
-        }
-        .animated-underline:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
         }
     </style>
 </head>
@@ -99,19 +26,19 @@
             <h1 class="text-4xl font-bold mb-2">💻 <span class="animated-underline accent-color">Frontend 기술 스택</span></h1>
             <div class="w-32 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
         </div>
-        
+
         <!-- Main content section with skills -->
         <div class="flex-grow">
             <!-- JavaScript Skill -->
             <div class="skill-card p-6 mb-6">
                 <div class="flex items-center mb-4">
                     <div class="tech-icon">
-                        <i class="fab fa-js"></i>
+                        <i class="fab fa-js" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex justify-between items-center">
                             <h2 class="text-2xl font-semibold">JavaScript</h2>
-                            <div class="flex">
+                            <div class="flex" role="meter" aria-label="JavaScript 숙련도 5점 만점에 3점">
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
@@ -131,12 +58,12 @@
             <div class="skill-card p-6 mb-6">
                 <div class="flex items-center mb-4">
                     <div class="tech-icon">
-                        <i class="fab fa-vuejs"></i>
+                        <i class="fab fa-vuejs" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex justify-between items-center">
                             <h2 class="text-2xl font-semibold">Vue.JS</h2>
-                            <div class="flex">
+                            <div class="flex" role="meter" aria-label="Vue.js 숙련도 5점 만점에 3점">
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
@@ -156,12 +83,12 @@
             <div class="skill-card p-6">
                 <div class="flex items-center mb-4">
                     <div class="tech-icon">
-                        <i class="fab fa-react"></i>
+                        <i class="fab fa-react" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex justify-between items-center">
                             <h2 class="text-2xl font-semibold">React</h2>
-                            <div class="flex">
+                            <div class="flex" role="meter" aria-label="React 숙련도 5점 만점에 2점">
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-empty"></div>
@@ -177,22 +104,29 @@
                 </ul>
             </div>
         </div>
-        
-        <!-- Footer with Navigation buttons -->
-        <div class="mt-8 flex justify-between items-center"> 
-            <!-- Previous Button -->
-            <a href="index.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
-                <i class="fas fa-arrow-left"></i>
-                <span>PREV</span>
-            </a>
 
-            <!-- Next Button -->
-            <a href="third.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
-                <span>NEXT</span>
-                <i class="fas fa-arrow-right"></i> 
-            </a>
+        <!-- Footer with Navigation buttons -->
+        <div class="mt-8">
+            <div class="page-indicator">
+                <span>2 / 10</span>
+            </div>
+            <div class="flex justify-between items-center">
+                <!-- Previous Button -->
+                <a href="index.html"
+                class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300"
+                aria-label="이전 페이지로 이동">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                    <span>PREV</span>
+                </a>
+
+                <!-- Next Button -->
+                <a href="third.html"
+                class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300"
+                aria-label="다음 페이지로 이동">
+                    <span>NEXT</span>
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
     </div>
 </body>
