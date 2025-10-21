@@ -3,92 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>시스템 및 DevOps 기술 스택</title>
+    <meta name="description" content="김성태의 시스템 및 DevOps 기술 스택 - Docker, Nginx, Jenkins를 활용한 인프라 자동화 및 CI/CD 구축 경험">
+    <meta property="og:title" content="시스템 및 DevOps 기술 스택 - 김성태 포트폴리오">
+    <meta property="og:description" content="컨테이너 기술, 웹 서버, CI/CD 파이프라인 구축을 통한 DevOps 경험">
+    <title>시스템 및 DevOps 기술 스택 - 김성태</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #0d1117;
-            color: #e6edf3;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .slide {
-            width: 1280px;
-            min-height: 720px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        }
+        /* Page-specific: Blue color theme for DevOps */
         .accent-color {
             color: #3b82f6;
-        }
-        .skill-block {
-            width: 32px;
-            height: 18px;
-            margin-right: 2px;
-            border-radius: 4px;
-            display: inline-block;
-            transition: all 0.3s ease;
         }
         .skill-filled {
             background-color: #3b82f6;
             box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
         }
-        .skill-empty {
-            background-color: #2D3748;
-            opacity: 0.5;
-        }
         .skill-card {
-            background-color: rgba(30, 41, 59, 0.7);
             border-left: 4px solid #3b82f6;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         .tech-icon {
-            font-size: 2.5rem;
-            margin-right: 1rem;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(30, 41, 59, 0.9);
-            border-radius: 12px;
             color: #3b82f6;
-            text-align: center;
-        }
-        .animated-underline {
-            position: relative;
-            display: inline-block;
         }
         .animated-underline::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 100%;
-            height: 3px;
             background-color: #3b82f6;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.5s ease;
         }
-        .animated-underline:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
+        .skill-block {
+            width: 32px;
+            height: 18px;
+            margin-right: 2px;
         }
         .tool-chip {
             background-color: rgba(59, 130, 246, 0.15);
@@ -154,19 +99,19 @@
             <h1 class="text-4xl font-bold mb-2">🛠️ <span class="animated-underline accent-color">System & DevOps 기술 스택</span></h1>
             <div class="w-32 h-1 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"></div>
         </div>
-        
+
         <!-- Main content section with skills -->
         <div class="grid grid-cols-3 gap-6">
             <!-- Docker Skill -->
             <div class="skill-card p-5">
                 <div class="flex items-center mb-3">
-                    <div class="tech-icon">
-                        <i class="devicon-docker-plain"></i>
+                    <div class="tech-icon" role="img" aria-label="Docker">
+                        <i class="devicon-docker-plain" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex justify-between items-center">
                             <h2 class="text-xl font-semibold mr-4">Docker</h2>
-                            <div class="flex">
+                            <div class="flex" role="meter" aria-label="Skill level: 4 out of 5">
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
@@ -185,13 +130,13 @@
             <!-- Nginx Skill -->
             <div class="skill-card p-5">
                 <div class="flex items-center mb-3">
-                    <div class="tech-icon">
-                        <i class="devicon-nginx-original"></i>
+                    <div class="tech-icon" role="img" aria-label="Nginx">
+                        <i class="devicon-nginx-original" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex justify-between items-center">
                             <h2 class="text-xl font-semibold mr-4">Nginx</h2>
-                            <div class="flex">
+                            <div class="flex" role="meter" aria-label="Skill level: 3 out of 5">
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
@@ -210,13 +155,13 @@
             <!-- Jenkins Skill -->
             <div class="skill-card p-5">
                 <div class="flex items-center mb-3">
-                    <div class="tech-icon">
-                        <i class="devicon-jenkins-plain"></i>
+                    <div class="tech-icon" role="img" aria-label="Jenkins">
+                        <i class="devicon-jenkins-plain" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex justify-between items-center">
                             <h2 class="text-xl font-semibold mr-4">Jenkins</h2>
-                            <div class="flex">
+                            <div class="flex" role="meter" aria-label="Skill level: 4 out of 5">
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
@@ -232,85 +177,90 @@
                 </ul>
             </div>
         </div>
-        
+
         <!-- Additional tools section -->
         <div class="mt-8">
             <h3 class="text-lg font-medium mb-3 text-blue-300">
-                <i class="fas fa-tools mr-2"></i>
+                <i class="fas fa-tools mr-2" aria-hidden="true"></i>
                 추가 활용 도구
             </h3>
-            
+
             <div class="grid grid-cols-3 gap-4">
                 <div class="bg-gray-800 bg-opacity-40 p-3 rounded-lg">
                     <h4 class="font-medium text-blue-200 mb-2">
-                        <i class="fas fa-chart-line mr-1"></i> 모니터링 & 분석
+                        <i class="fas fa-chart-line mr-1" aria-hidden="true"></i> 모니터링 & 분석
                     </h4>
                     <div class="flex flex-wrap">
-                        <div class="tool-chip"><i class="fas fa-chart-area"></i>Prometheus</div>
-                        <div class="tool-chip"><i class="fas fa-tachometer-alt"></i>Grafana</div>
-                        <div class="tool-chip"><i class="fas fa-tasks"></i>Flower</div>
-                        <div class="tool-chip"><i class="fas fa-bug"></i>SonarQube</div>
+                        <div class="tool-chip"><i class="fas fa-chart-area" aria-hidden="true"></i>Prometheus</div>
+                        <div class="tool-chip"><i class="fas fa-tachometer-alt" aria-hidden="true"></i>Grafana</div>
+                        <div class="tool-chip"><i class="fas fa-tasks" aria-hidden="true"></i>Flower</div>
+                        <div class="tool-chip"><i class="fas fa-bug" aria-hidden="true"></i>SonarQube</div>
                     </div>
                 </div>
-                
+
                 <div class="bg-gray-800 bg-opacity-40 p-3 rounded-lg">
                     <h4 class="font-medium text-blue-200 mb-2">
-                        <i class="fas fa-cogs mr-1"></i> 비동기 처리
+                        <i class="fas fa-cogs mr-1" aria-hidden="true"></i> 비동기 처리
                     </h4>
                     <div class="flex flex-wrap">
-                        <div class="tool-chip"><i class="fas fa-layer-group"></i>Celery</div>
+                        <div class="tool-chip"><i class="fas fa-layer-group" aria-hidden="true"></i>Celery</div>
                     </div>
                 </div>
-                
+
                 <div class="bg-gray-800 bg-opacity-40 p-3 rounded-lg">
                     <h4 class="font-medium text-blue-200 mb-2">
-                        <i class="fas fa-users mr-1"></i> 협업
+                        <i class="fas fa-users mr-1" aria-hidden="true"></i> 협업
                     </h4>
                     <div class="flex flex-wrap">
-                        <div class="tool-chip"><i class="fab fa-atlassian"></i>JIRA</div>
-                        <div class="tool-chip"><i class="fas fa-comments"></i>Mattermost</div>
+                        <div class="tool-chip"><i class="fab fa-atlassian" aria-hidden="true"></i>JIRA</div>
+                        <div class="tool-chip"><i class="fas fa-comments" aria-hidden="true"></i>Mattermost</div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <!-- DevOps benefits section -->
         <div class="bg-opacity-40 bg-gray-800 rounded-lg p-5 border-l-4 border-blue-400 mt-6">
             <h3 class="text-lg font-medium mb-2 text-blue-300">DevOps 핵심 역량</h3>
             <div class="grid grid-cols-4 gap-4">
                 <div class="flex items-center">
-                    <i class="fas fa-network-wired mr-2 text-blue-300"></i>
+                    <i class="fas fa-network-wired mr-2 text-blue-300" aria-hidden="true"></i>
                     <span>인프라 자동화</span>
                 </div>
                 <div class="flex items-center">
-                    <i class="fas fa-chart-area mr-2 text-blue-300"></i>
+                    <i class="fas fa-chart-area mr-2 text-blue-300" aria-hidden="true"></i>
                     <span>시스템 모니터링</span>
                 </div>
                 <div class="flex items-center">
-                    <i class="fas fa-shield-alt mr-2 text-blue-300"></i>
+                    <i class="fas fa-shield-alt mr-2 text-blue-300" aria-hidden="true"></i>
                     <span>보안 설정</span>
                 </div>
                 <div class="flex items-center">
-                    <i class="fas fa-rocket mr-2 text-blue-300"></i>
+                    <i class="fas fa-rocket mr-2 text-blue-300" aria-hidden="true"></i>
                     <span>지속적 통합/배포</span>
                 </div>
             </div>
         </div>
-        
+
+        <!-- Page indicator -->
+        <div class="page-indicator">5 / 10</div>
+
         <!-- Footer with Navigation buttons -->
-        <div class="mt-8 flex justify-between items-center"> 
+        <div class="mt-8 flex justify-between items-center">
             <!-- Previous Button -->
-            <a href="fourth.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
-                <i class="fas fa-arrow-left"></i>
+            <a href="fourth.html"
+               aria-label="Previous page: Database Technology Stack"
+               class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i>
                 <span>PREV</span>
             </a>
 
             <!-- Next Button -->
-            <a href="sixth.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+            <a href="sixth.html"
+               aria-label="Next page: Mobile Technology Stack"
+               class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
                 <span>NEXT</span>
-                <i class="fas fa-arrow-right"></i> 
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
         </div>
     </div>

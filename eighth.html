@@ -3,30 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>프로젝트 경험</title>
+    <meta name="description" content="김성태의 프로젝트 경험 - BUSS, ABTwin, Myonitoring, OmyPIc, MCPanda 등 다양한 웹/모바일 프로젝트 개발 경험">
+    <meta property="og:title" content="프로젝트 경험 요약 - 김성태 포트폴리오">
+    <meta property="og:description" content="백엔드, 인프라, AI를 활용한 실전 프로젝트 개발 경험 및 기술 스택">
+    <title>프로젝트 경험 - 김성태</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #0d1117;
-            color: #e6edf3;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .slide {
-            width: 1280px;
-            min-height: 720px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        }
+        /* Page-specific: Purple color theme for Projects */
         .project-card {
             background-color: rgba(30, 41, 59, 0.7);
             border-radius: 8px;
@@ -44,7 +30,7 @@
         .project-myonitoring { border-color: #3B82F6; }
         .project-omypic { border-color: #8B5CF6; }
         .project-mcpanda { border-color: #EC4899; }
-        
+
         .tech-tag {
             font-size: 0.7rem;
             padding: 3px 8px;
@@ -114,15 +100,15 @@
             <h1 class="text-4xl font-bold mb-2">👨🏻‍💻 <span class="animated-underline text-purple-400">Project Summary</span></h1>
             <div class="w-32 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full"></div>
         </div>
-        
+
         <!-- Projects Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- BUSS Project -->
             <div class="project-card project-buss p-4">
                 <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center">
-                        <div class="project-icon bg-green-900 bg-opacity-30 text-green-400">
-                            <i class="fas fa-bus"></i>
+                        <div class="project-icon bg-green-900 bg-opacity-30 text-green-400" role="img" aria-label="BUSS Project">
+                            <i class="fas fa-bus" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-lg font-semibold text-green-400">BUSS</h3>
                     </div>
@@ -152,8 +138,8 @@
             <div class="project-card project-abtwin p-4">
                 <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center">
-                        <div class="project-icon bg-yellow-900 bg-opacity-30 text-yellow-400">
-                            <i class="fas fa-balance-scale"></i>
+                        <div class="project-icon bg-yellow-900 bg-opacity-30 text-yellow-400" role="img" aria-label="ABTwin Project">
+                            <i class="fas fa-balance-scale" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-lg font-semibold text-yellow-400">ABTwin</h3>
                     </div>
@@ -182,8 +168,8 @@
             <div class="project-card project-myonitoring p-4">
                 <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center">
-                        <div class="project-icon bg-blue-900 bg-opacity-30 text-blue-400">
-                            <i class="fas fa-cat"></i>
+                        <div class="project-icon bg-blue-900 bg-opacity-30 text-blue-400" role="img" aria-label="Myonitoring Project">
+                            <i class="fas fa-cat" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-lg font-semibold text-blue-400">Myonitoring</h3>
                     </div>
@@ -213,8 +199,8 @@
             <div class="project-card project-omypic p-4">
                 <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center">
-                        <div class="project-icon bg-purple-900 bg-opacity-30 text-purple-400">
-                            <i class="fas fa-microphone-alt"></i>
+                        <div class="project-icon bg-purple-900 bg-opacity-30 text-purple-400" role="img" aria-label="OmyPIc Project">
+                            <i class="fas fa-microphone-alt" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-lg font-semibold text-purple-400">OmyPIc</h3>
                     </div>
@@ -247,8 +233,8 @@
             <div class="project-card project-mcpanda p-4 md:col-span-2 mt-1">
                 <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center">
-                        <div class="project-icon bg-pink-900 bg-opacity-30 text-pink-400">
-                            <i class="fas fa-search"></i>
+                        <div class="project-icon bg-pink-900 bg-opacity-30 text-pink-400" role="img" aria-label="MCPanda Project">
+                            <i class="fas fa-search" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-lg font-semibold text-pink-400">MCPanda</h3>
                     </div>
@@ -275,21 +261,27 @@
                     </div>
                 </div>
             </div>
-        </div>   
+        </div>
+
+        <!-- Page indicator -->
+        <div class="page-indicator">8 / 10</div>
+
         <!-- Footer with Navigation buttons -->
-        <div class="mt-8 flex justify-between items-center"> 
+        <div class="mt-8 flex justify-between items-center">
             <!-- Previous Button -->
-            <a href="seventh.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
-                <i class="fas fa-arrow-left"></i>
+            <a href="seventh.html"
+               aria-label="Previous page: Awards and Education"
+               class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i>
                 <span>PREV</span>
             </a>
 
             <!-- Next Button -->
-            <a href="ninth.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+            <a href="ninth.html"
+               aria-label="Next page: Troubleshooting Part 1"
+               class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
                 <span>NEXT</span>
-                <i class="fas fa-arrow-right"></i> 
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
         </div>
     </div>

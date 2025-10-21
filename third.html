@@ -3,72 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>백엔드 기술 스택</title>
+    <meta name="description" content="김성태의 백엔드 기술 스택 - FastAPI, SpringBoot를 활용한 RESTful API 개발 경험">
+    <meta property="og:title" content="백엔드 기술 스택 - 김성태 포트폴리오">
+    <meta property="og:description" content="FastAPI와 SpringBoot를 활용한 백엔드 개발 경험 및 API 설계 역량">
+    <title>백엔드 기술 스택 - 김성태</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #0d1117;
-            color: #e6edf3;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .slide {
-            width: 1280px;
-            min-height: 720px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            margin: 20px;
-        }
+        /* Page-specific: Green color theme for Backend */
         .accent-color {
-            color: #58a6ff;
-        }
-        .skill-block {
-            width: 50px;
-            height: 24px;
-            margin-right: 4px;
-            border-radius: 4px;
-            display: inline-block;
-            transition: all 0.3s ease;
+            color: #2ea44f;
         }
         .skill-filled {
             background-color: #2ea44f;
             box-shadow: 0 0 8px rgba(46, 164, 79, 0.5);
         }
-        .skill-empty {
-            background-color: #2D3748;
-            opacity: 0.5;
-        }
         .skill-card {
-            background-color: rgba(30, 41, 59, 0.7);
             border-left: 4px solid #2ea44f;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         .tech-icon {
-            font-size: 2.5rem;
-            margin-right: 1rem;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(30, 41, 59, 0.9);
-            border-radius: 12px;
             color: #2ea44f;
-            text-align: center;
         }
         .tech-icon.fastapi {
             color: #009688;
@@ -76,25 +32,8 @@
         .tech-icon.spring {
             color: #6db33f;
         }
-        .animated-underline {
-            position: relative;
-            display: inline-block;
-        }
         .animated-underline::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 100%;
-            height: 3px;
             background-color: #2ea44f;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.5s ease;
-        }
-        .animated-underline:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
         }
         .api-pulse {
             position: absolute;
@@ -120,22 +59,22 @@
     <div class="slide flex flex-col p-16">
         <!-- Header with title -->
         <div class="mb-8">
-            <h1 class="text-4xl font-bold mb-2">⚙️ <span class="animated-underline accent-color" style="color: #2ea44f;">Backend 기술 스택</span></h1>
+            <h1 class="text-4xl font-bold mb-2">⚙️ <span class="animated-underline accent-color">Backend 기술 스택</span></h1>
             <div class="w-32 h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
         </div>
-        
+
         <!-- Main content section with skills -->
         <div class="flex-grow">
             <!-- FastAPI Skill -->
             <div class="skill-card p-6 mb-8">
                 <div class="flex items-center mb-4">
-                    <div class="tech-icon fastapi">
-                        <i class="fas fa-bolt"></i>
+                    <div class="tech-icon fastapi" role="img" aria-label="FastAPI">
+                        <i class="fas fa-bolt" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex justify-between items-center">
                             <h2 class="text-2xl font-semibold">FastAPI</h2>
-                            <div class="flex">
+                            <div class="flex" role="meter" aria-label="Skill level: 2 out of 5">
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-empty"></div>
@@ -154,13 +93,13 @@
             <!-- Spring Boot Skill -->
             <div class="skill-card p-6 mb-8">
                 <div class="flex items-center mb-4">
-                    <div class="tech-icon spring">
-                        <i class="fas fa-leaf"></i>
+                    <div class="tech-icon spring" role="img" aria-label="Spring Boot">
+                        <i class="fas fa-leaf" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex justify-between items-center">
                             <h2 class="text-2xl font-semibold">SpringBoot</h2>
-                            <div class="flex">
+                            <div class="flex" role="meter" aria-label="Skill level: 4 out of 5">
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
                                 <div class="skill-block skill-filled"></div>
@@ -181,39 +120,44 @@
                 <h3 class="text-xl font-medium mb-3 text-green-300">백엔드 중점 역량</h3>
                 <div class="grid grid-cols-3 gap-4">
                     <div class="flex items-center">
-                        <i class="fas fa-server mr-2 text-green-300"></i>
+                        <i class="fas fa-server mr-2 text-green-300" aria-hidden="true"></i>
                         <span>API 설계 및 개발</span>
                     </div>
                     <div class="flex items-center">
-                        <i class="fas fa-database mr-2 text-green-300"></i>
+                        <i class="fas fa-database mr-2 text-green-300" aria-hidden="true"></i>
                         <span>데이터베이스 연동</span>
                     </div>
                     <div class="flex items-center">
-                        <i class="fas fa-shield-alt mr-2 text-green-300"></i>
+                        <i class="fas fa-shield-alt mr-2 text-green-300" aria-hidden="true"></i>
                         <span>보안 설정 구축</span>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <!-- Background elements -->
-        <div class="api-pulse"></div>
-        <div class="api-pulse" style="animation-delay: 2s; right: 200px; top: 150px;"></div>
-        
+        <div class="api-pulse" aria-hidden="true"></div>
+        <div class="api-pulse" style="animation-delay: 2s; right: 200px; top: 150px;" aria-hidden="true"></div>
+
+        <!-- Page indicator -->
+        <div class="page-indicator">3 / 10</div>
+
         <!-- Footer with Navigation buttons -->
-        <div class="mt-8 flex justify-between items-center"> 
+        <div class="mt-8 flex justify-between items-center">
             <!-- Previous Button -->
-            <a href="second.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
-                <i class="fas fa-arrow-left"></i>
+            <a href="second.html"
+               aria-label="Previous page: Frontend Technology Stack"
+               class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i>
                 <span>PREV</span>
             </a>
 
             <!-- Next Button -->
-            <a href="fourth.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+            <a href="fourth.html"
+               aria-label="Next page: Database Technology Stack"
+               class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
                 <span>NEXT</span>
-                <i class="fas fa-arrow-right"></i> 
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
         </div>
     </div>

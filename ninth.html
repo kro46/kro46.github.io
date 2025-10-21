@@ -3,30 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>트러블슈팅 경험 Part 1</title>
+    <meta name="description" content="김성태의 트러블슈팅 경험 Part 1 - CORS 에러 해결, 비동기 처리 성능 개선 등 실무 문제 해결 사례">
+    <meta property="og:title" content="트러블슈팅 경험 Part 1 - 김성태 포트폴리오">
+    <meta property="og:description" content="실무에서 마주한 핵심 문제들과 효율적인 해결 과정 - CORS, 비동기 처리 등">
+    <title>트러블슈팅 경험 Part 1 - 김성태</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #0d1117;
-            color: #e6edf3;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .slide {
-            width: 1280px;
-            min-height: 720px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        }
+        /* Page-specific: Red/Orange color theme for Troubleshooting */
         .project-card {
             background-color: rgba(30, 41, 59, 0.7);
             border-radius: 8px;
@@ -39,10 +25,10 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
-        
+
         .trouble-cors { border-color: #ef4444; }
         .trouble-async { border-color: #f59e0b; }
-        
+
         .animated-underline {
             position: relative;
             display: inline-block;
@@ -133,13 +119,13 @@
             <div class="w-32 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"></div>
             <p class="text-sm text-gray-400 mt-3">실무에서 마주한 핵심 문제들과 효율적인 해결 과정 (1/2)</p>
         </div>
-        
+
         <!-- CORS Error Issue -->
         <div class="project-card trouble-cors p-6">
             <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center">
-                    <div class="project-icon bg-red-900 bg-opacity-30 text-red-400">
-                        <i class="fas fa-ban"></i>
+                    <div class="project-icon bg-red-900 bg-opacity-30 text-red-400" role="img" aria-label="CORS Error Problem">
+                        <i class="fas fa-ban" aria-hidden="true"></i>
                     </div>
                     <div>
                         <h3 class="text-2xl font-semibold text-red-400">CORS 에러 발생 문제</h3>
@@ -148,13 +134,13 @@
                 </div>
                 <span class="trouble-status">Critical</span>
             </div>
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
                     <div class="section-detail">
                         <h4 class="text-lg font-medium text-red-300 mb-3">🚨 Problem Situation</h4>
                         <p class="text-sm text-gray-300 mb-3">
-                            프론트엔드에서 백엔드 API 호출 시 CORS 에러로 인해 모든 HTTP 요청이 차단되어 
+                            프론트엔드에서 백엔드 API 호출 시 CORS 에러로 인해 모든 HTTP 요청이 차단되어
                             애플리케이션이 정상적으로 작동하지 않는 심각한 문제가 발생했습니다.
                         </p>
                         <div class="warning-box">
@@ -164,10 +150,10 @@
                             • 사용자 로그인 및 인증 기능 완전 중단<br>
                             • 실시간 모니터링 데이터 수신 불가
                         </div>
-                        
+
                         <h4 class="text-lg font-medium text-blue-300 mb-3 mt-4">🔍 Root Cause Analysis</h4>
                         <p class="text-sm text-gray-300">
-                            <strong class="text-blue-300">근본 원인:</strong> nginx.conf 파일과 백엔드의 application.properties에서 
+                            <strong class="text-blue-300">근본 원인:</strong> nginx.conf 파일과 백엔드의 application.properties에서
                             CORS 설정을 동시에 처리하여 중복 헤더가 발생하고 브라우저에서 이를 거부
                         </p>
                     </div>
@@ -176,13 +162,13 @@
                 <div>
                     <div class="section-detail">
                         <h4 class="text-lg font-medium text-green-300 mb-3">🔧 Solution Process</h4>
-                        
+
                         <div class="solution-box">
                             <strong class="text-green-200 mb-2 block">해결 방법: Nginx CORS 설정 제거</strong>
                             <p class="text-sm text-gray-300 mb-3">
                                 중복되는 CORS 설정을 제거하여 백엔드에서만 CORS를 처리하도록 변경
                             </p>
-                            
+
                             <div class="code-snippet">
 # nginx.conf - CORS 설정 제거 전/후
 # Before (문제 상황)
@@ -198,12 +184,12 @@ location /api/ {
     # CORS 설정 완전 제거
 }
                             </div>
-                            
+
                             <p class="text-xs text-gray-400 mt-2">
                                 백엔드 application.properties의 CORS 설정만 유지하여 일관된 정책 적용
                             </p>
                         </div>
-                        
+
                         <h4 class="text-lg font-medium text-blue-300 mb-3 mt-4">📊 Performance Impact</h4>
                         <div class="flex flex-wrap gap-2">
                             <div class="metric-improvement">API 호출 성공률 100%</div>
@@ -220,8 +206,8 @@ location /api/ {
         <div class="project-card trouble-async p-6">
             <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center">
-                    <div class="project-icon bg-yellow-900 bg-opacity-30 text-yellow-400">
-                        <i class="fas fa-clock"></i>
+                    <div class="project-icon bg-yellow-900 bg-opacity-30 text-yellow-400" role="img" aria-label="Async Processing Problem">
+                        <i class="fas fa-clock" aria-hidden="true"></i>
                     </div>
                     <div>
                         <h3 class="text-2xl font-semibold text-yellow-400">순차 처리로 인한 대기시간 문제</h3>
@@ -230,13 +216,13 @@ location /api/ {
                 </div>
                 <span class="trouble-status">High</span>
             </div>
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
                     <div class="section-detail">
                         <h4 class="text-lg font-medium text-yellow-300 mb-3">🚨 Problem Situation</h4>
                         <p class="text-sm text-gray-300 mb-3">
-                            음성 변환 작업이 순차적으로 처리되어 다중 사용자 접속 시 
+                            음성 변환 작업이 순차적으로 처리되어 다중 사용자 접속 시
                             대기시간이 누적되면서 사용자 경험이 급격히 저하되는 문제가 발생했습니다.
                         </p>
                         <div class="warning-box">
@@ -246,10 +232,10 @@ location /api/ {
                             • 사용자 이탈률 70% 증가<br>
                             • 서버 리소스 활용률 25% (대부분 대기 상태)
                         </div>
-                        
+
                         <h4 class="text-lg font-medium text-blue-300 mb-3 mt-4">🔍 Root Cause Analysis</h4>
                         <p class="text-sm text-gray-300">
-                            <strong class="text-blue-300">근본 원인:</strong> 동기식 처리 방식으로 인해 한 번에 하나의 음성 변환 작업만 처리 가능하여 
+                            <strong class="text-blue-300">근본 원인:</strong> 동기식 처리 방식으로 인해 한 번에 하나의 음성 변환 작업만 처리 가능하여
                             사용자별 대기시간이 선형적으로 증가
                         </p>
                     </div>
@@ -258,13 +244,13 @@ location /api/ {
                 <div>
                     <div class="section-detail">
                         <h4 class="text-lg font-medium text-green-300 mb-3">🔧 Solution Process</h4>
-                        
+
                         <div class="solution-box">
                             <strong class="text-green-200 mb-2 block">해결 방법: Celery + Redis 비동기 작업 큐 도입</strong>
                             <p class="text-sm text-gray-300 mb-3">
                                 작업 큐 시스템을 통해 여러 음성 변환 작업을 병렬로 처리할 수 있는 환경 구축
                             </p>
-                            
+
                             <div class="code-snippet">
 # 비동기 작업 큐 설정
 @app.task
@@ -279,12 +265,12 @@ celery -A app.celery worker --concurrency=4
 task = process_audio_task.delay(file_path, user_id)
 return {"task_id": task.id, "status": "PENDING"}
                             </div>
-                            
+
                             <p class="text-xs text-gray-400 mt-2">
                                 4개의 워커 프로세스로 동시에 4개의 음성 변환 작업 병렬 처리 가능
                             </p>
                         </div>
-                        
+
                         <h4 class="text-lg font-medium text-blue-300 mb-3 mt-4">📊 Performance Impact</h4>
                         <div class="flex flex-wrap gap-2">
                             <div class="metric-improvement">대기시간 80% ↓</div>
@@ -296,21 +282,26 @@ return {"task_id": task.id, "status": "PENDING"}
                 </div>
             </div>
         </div>
-        
+
+        <!-- Page indicator -->
+        <div class="page-indicator">9 / 10</div>
+
         <!-- Footer with Navigation buttons -->
-        <div class="mt-8 flex justify-between items-center"> 
+        <div class="mt-8 flex justify-between items-center">
             <!-- Previous Button -->
-            <a href="eighth.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
-                <i class="fas fa-arrow-left"></i>
+            <a href="eighth.html"
+               aria-label="Previous page: Project Summary"
+               class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-300">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i>
                 <span>PREV</span>
             </a>
 
             <!-- Next Button -->
-            <a href="tenth.html" 
-            class="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-red-500 to-yellow-500 text-white font-semibold rounded-lg shadow-sm hover:from-red-600 hover:to-yellow-600 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-opacity-50 transition-all duration-300">
+            <a href="tenth.html"
+               aria-label="Next page: Troubleshooting Part 2"
+               class="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-red-500 to-yellow-500 text-white font-semibold rounded-lg shadow-sm hover:from-red-600 hover:to-yellow-600 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-opacity-50 transition-all duration-300">
                 <span>NEXT (Part 2)</span>
-                <i class="fas fa-arrow-right"></i>
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
         </div>
     </div>
